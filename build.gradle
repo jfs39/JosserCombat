@@ -15,3 +15,8 @@ dependencies {
     compile project(':commun')
     compile project(':commun_javafx')
 }
+
+task(joueur01, dependsOn: 'classes', type: JavaExec) {
+   main = 'JosserCombat.Principal'
+   classpath = sourceSets.main.runtimeClasspath
+}
