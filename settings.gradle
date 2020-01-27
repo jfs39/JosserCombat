@@ -2,3 +2,6 @@ rootProject.name = 'JosserCombat'
 
 include ':commun'
 project(':commun').projectDir = file('../tutoriels_java/commun')
+
+include ':commun_javafx'
+project(':commun_javafx').projectDir = file('../tutoriels_java/commun_javafx')
