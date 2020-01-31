@@ -33,6 +33,7 @@ public class Principal extends Application {
 		
 		fenetrePrincipale.setScene(scene);
 		
+		
 		fenetrePrincipale.show();
 		
 	}
@@ -40,9 +41,8 @@ public class Principal extends Application {
 	private Scene creerScenePrincipale() {
 		
 		J.appel(this);
-		ChargeurDeVue chargeur = new ChargeurDeVue("/fxml/principal.xml");
+		ChargeurDeVue chargeur = new ChargeurDeVue("/fxml/parametres.xml","traductions.chaines","/css/parametres.css");
 		Scene scene = chargeur.nouvelleScene(600,400);
-		
 		DoitEtre.nonNul(scene);
 		
 		return scene;
