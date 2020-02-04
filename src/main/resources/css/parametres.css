@@ -18,15 +18,14 @@
 }
 .fenetre{
 	
-	/*-fx-background-image: url("../../../src/main/java/photos/222.gif");*/
-	-fx-background-image: url("../../../../../../../../222.gif");
+	-fx-background-image: url("../../../src/main/resources/photos/222.gif");
+	-fx-background-color:#ffb3e6; /*Je n'ai pas eu le choix étant donné le "ç" dans mon nom, il faut mettre le background dans le C pour que le tout fonctionne */
 
 	-fx-background-size:stretch;
 }
 .boutonConfirmer{
 	
 	-fx-background-color:lightblue;
-
 }
 .boutonConfirmer:hover{
 	
@@ -35,6 +34,7 @@
 .boutonAnnuler{
 	
 	-fx-background-color:lightblue;
+
 }
 .boutonAnnuler:hover{
 	
@@ -45,6 +45,7 @@
 
 	-fx-background-color: rgba(255,255,255,0.7);
 	-fx-background-radius:5;
+
 }
 
 .texteVolume{
@@ -63,6 +64,7 @@
 
 *{
 	-fx-font-family:"Century Gothic";
+	
 }
 
 /*HBox{
