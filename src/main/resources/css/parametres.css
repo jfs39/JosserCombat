@@ -1,4 +1,76 @@
-.conteneurPrincipal{
+.titre{
+	-fx-alignment:center;
+	
+}
 
-    -fx-background-color:rgb(230, 30, 163);
+.boutons{
+	-fx-alignment:bottom-center;
+}
+
+.contenuLangue{
+	
+	-fx-padding: 20px 20px 20px 20px;
+}
+
+.contenuVolume{
+	
+	-fx-padding: 20px 20px 20px 20px;
+}
+.fenetre{
+	
+	/*-fx-background-image: url("../../../src/main/java/photos/222.gif");*/
+	-fx-background-image: url("../../../../../../../../222.gif");
+
+	-fx-background-size:stretch;
+}
+.boutonConfirmer{
+	
+	-fx-background-color:lightblue;
+
+}
+.boutonConfirmer:hover{
+	
+	-fx-background-color:lightgreen;
+}
+.boutonAnnuler{
+	
+	-fx-background-color:lightblue;
+}
+.boutonAnnuler:hover{
+	
+	-fx-background-color:darksalmon;
+}
+.texteLangue{
+	-fx-alignment:center;
+
+	-fx-background-color: rgba(255,255,255,0.7);
+	-fx-background-radius:5;
+}
+.texteVolume{
+	
+	-fx-background-color: rgba(255,255,255,0.7);
+	-fx-background-radius: 5;
+	-fx-alignment:center;
+}
+.slider{
+		-fx-alignment:center;
+	
+}
+.vide{
+	-fx-min-height: 20px;
+}
+*{
+	-fx-font-family:"Century Gothic";
+}
+
+HBox{
+    -fx-border-style: dashed;
+    -fx-border-color: red;
+    -fx-border-width: 2px;
+}
+
+VBox{
+    -fx-border-style: dashed;
+    -fx-border-color: blue;
+    -fx-border-width: 2px;
 }

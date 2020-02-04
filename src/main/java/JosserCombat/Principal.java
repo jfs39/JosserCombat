@@ -1,5 +1,7 @@
 package JosserCombat;
 
+
+
 import commun.debogage.DoitEtre;
 import commun.debogage.J;
 import javafx.application.Application;
@@ -31,17 +33,38 @@ public class Principal extends Application {
 		
 		Scene scene = creerScenePrincipale();
 		
-		fenetrePrincipale.setScene(scene);
-		
-		
-		fenetrePrincipale.show();
-		
-	}
+
+        afficherFenetre(fenetrePrincipale, scene);
+    }
+
+    private void afficherFenetre(Stage fenetrePrincipale, Scene scene) {
+        J.appel(this);
+
+        setLargeurFenetre(fenetrePrincipale);
+        setHauteurFenetre(fenetrePrincipale);
+
+        fenetrePrincipale.setScene(scene);
+        fenetrePrincipale.show();
+    }
+
+    private void setHauteurFenetre(Stage fenetrePrincipale) {
+        J.appel(this);
+
+        fenetrePrincipale.setHeight(700);
+        fenetrePrincipale.setMinHeight(400);
+    }
+
+    private void setLargeurFenetre(Stage fenetrePrincipale) {
+        J.appel(this);
+
+        fenetrePrincipale.setWidth(800);
+        fenetrePrincipale.setMinWidth(400);
+    }
 	
 	private Scene creerScenePrincipale() {
 		
 		J.appel(this);
-		ChargeurDeVue chargeur = new ChargeurDeVue("/fxml/parametres.xml","traductions.chaines","/css/parametres.css");
+		ChargeurDeVue chargeur = new ChargeurDeVue("/fxml/parametres.xml","traductions.chaines_en","/css/parametres.css");
 		Scene scene = chargeur.nouvelleScene(600,400);
 		DoitEtre.nonNul(scene);
 		
