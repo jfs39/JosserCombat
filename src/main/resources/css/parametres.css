@@ -46,6 +46,7 @@
 	-fx-background-color: rgba(255,255,255,0.7);
 	-fx-background-radius:5;
 }
+
 .texteVolume{
 	
 	-fx-background-color: rgba(255,255,255,0.7);
@@ -59,11 +60,12 @@
 .vide{
 	-fx-min-height: 20px;
 }
+
 *{
 	-fx-font-family:"Century Gothic";
 }
 
-HBox{
+/*HBox{
     -fx-border-style: dashed;
     -fx-border-color: red;
     -fx-border-width: 2px;
@@ -73,4 +75,4 @@ VBox{
     -fx-border-style: dashed;
     -fx-border-color: blue;
     -fx-border-width: 2px;
-}
+}*/
