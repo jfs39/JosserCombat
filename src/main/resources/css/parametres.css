@@ -18,14 +18,16 @@
 }
 .fenetre{
 	
-	-fx-background-image: url("../../../src/main/resources/photos/222.gif");
-	-fx-background-color:#ffb3e6; /*Je n'ai pas eu le choix étant donné le "ç" dans mon nom, il faut mettre le background dans le C pour que le tout fonctionne */
+ 	-fx-background-image: url("../../../src/main/resources/img/222.gif");
+	-fx-background-image: url("/img/222.gif");
+	-fx-background-color:#ffb3e6; 
 
 	-fx-background-size:stretch;
 }
 .boutonConfirmer{
 	
 	-fx-background-color:lightblue;
+	
 }
 .boutonConfirmer:hover{
 	
@@ -34,6 +36,7 @@
 .boutonAnnuler{
 	
 	-fx-background-color:lightblue;
+	
 
 }
 .boutonAnnuler:hover{
@@ -67,7 +70,7 @@
 	
 }
 
-/*HBox{
+HBox{
     -fx-border-style: dashed;
     -fx-border-color: red;
     -fx-border-width: 2px;
@@ -77,4 +80,9 @@ VBox{
     -fx-border-style: dashed;
     -fx-border-color: blue;
     -fx-border-width: 2px;
-}*/
+}
+BoutonSprite{
+	    -fx-border-style: dashed;
+    -fx-border-color: pink;
+    -fx-border-width: 2px;
+}

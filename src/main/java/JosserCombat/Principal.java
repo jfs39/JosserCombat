@@ -1,7 +1,5 @@
 package JosserCombat;
 
-
-
 import commun.debogage.DoitEtre;
 import commun.debogage.J;
 import javafx.application.Application;
