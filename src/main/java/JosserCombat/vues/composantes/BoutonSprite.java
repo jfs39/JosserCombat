@@ -15,11 +15,8 @@ import javafx.scene.paint.Color;
 public class BoutonSprite extends HBox {
 
 	private ImageView imageView;
-	private String url = "/img/prototypeJoseph.png";
-	
-	
-
-	
+	private String urlJoseph = "/img/Joseph/JosephHit.gif";
+	private String urlYasser="/img/Yasser/YasserHit.gif";
 	
 	public BoutonSprite(@NamedArg("texte") String texte) {
 		super();
@@ -27,20 +24,16 @@ public class BoutonSprite extends HBox {
 		
 		Button bouton = new Button(texte);
 		
-		
-	
-		
-		
 		if (texte.equals("Confirmer")) {
 			
 			genererBouton(bouton, "boutonConfirmer");
+			genererImage(urlJoseph);
 			
 		} else {
 			
 			genererBouton(bouton,"boutonAnnuler");
+			genererImage(urlYasser);
 		}
-		
-		genererImage();
 		
 		bouton.setOnMouseEntered((e)->{
 			imageView.setStyle("-fx-opacity:100;");
@@ -53,13 +46,13 @@ public class BoutonSprite extends HBox {
 		});
 		}
 	
-		private void genererImage() {
+		private void genererImage(String url) {
 			J.appel(this);
 			InputStream streamImage = ImageAjustable.class.getResourceAsStream(url);
 			Image image = new Image(streamImage);
 			imageView = new ImageView(image);
-			imageView.setFitHeight(150);
-			imageView.setFitWidth(150);
+			imageView.setFitHeight(175);
+			imageView.setFitWidth(175);
 			imageView.setTranslateX(70);
 			this.getChildren().add(imageView);
 			imageView.setStyle("-fx-opacity:0;");
@@ -71,13 +64,8 @@ public class BoutonSprite extends HBox {
 			this.setAlignment(Pos.BOTTOM_LEFT);
 			bouton.getStyleClass().add(type);
 			this.getChildren().add(bouton);
-			bouton.setMinWidth(80);
-			bouton.setMinHeight(40);
+			bouton.setMinWidth(95);
+			bouton.setMinHeight(45);
 		}
-		
-	
 
-
-	
-	
 }

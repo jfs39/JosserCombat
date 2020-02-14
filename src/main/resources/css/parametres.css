@@ -63,6 +63,7 @@
 }
 .vide{
 	-fx-min-height: 20px;
+	-fx-min-width:25px;
 }
 
 *{
@@ -70,7 +71,7 @@
 	
 }
 
-HBox{
+/*HBox{
     -fx-border-style: dashed;
     -fx-border-color: red;
     -fx-border-width: 2px;
@@ -85,4 +86,4 @@ BoutonSprite{
 	    -fx-border-style: dashed;
     -fx-border-color: pink;
     -fx-border-width: 2px;
-}
+}*/

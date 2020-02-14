@@ -49,14 +49,14 @@ public class Principal extends Application {
         J.appel(this);
 
         fenetrePrincipale.setHeight(700);
-        fenetrePrincipale.setMinHeight(400);
+        fenetrePrincipale.setMinHeight(600);
     }
 
     private void setLargeurFenetre(Stage fenetrePrincipale) {
         J.appel(this);
 
-        fenetrePrincipale.setWidth(800);
-        fenetrePrincipale.setMinWidth(400);
+        fenetrePrincipale.setWidth(900);
+        fenetrePrincipale.setMinWidth(700);
     }
 	
 	private Scene creerScenePrincipale() {
