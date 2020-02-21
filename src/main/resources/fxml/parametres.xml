@@ -13,7 +13,7 @@
 <?import josser_combat_javafx.vues.composantes.BoutonSprite?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="josser_combat_javafx.controleurs.ControleurParametresFX">
+<StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="josser_combat_javafx.vues.VueParametresFX">
 	<VBox VBox.vgrow="ALWAYS" styleClass="fenetre">
 	
 	  	<HBox styleClass="titre" VBox.vgrow="ALWAYS">
@@ -68,13 +68,13 @@
 					<Slider /> 
 					</HBox>
 				<HBox styleClass="petitVide"></HBox>
-							<RadioButton text="%sonOn" >
+							<RadioButton text="%sonOn" fx:id="sonON">
 								<toggleGroup>
 									<ToggleGroup fx:id="son" />
 								</toggleGroup>
 							</RadioButton>
 				<HBox styleClass="petitVide"></HBox>
-							<RadioButton text="%sonOff" >               
+							<RadioButton text="%sonOff" fx:id="sonOFF">               
 								<toggleGroup>
 									<fx:reference source="son" />
 								</toggleGroup>
@@ -86,8 +86,6 @@
 
 				<BoutonSprite VBox.vgrow="ALWAYS" texte="Confirmer" fx:id="animationConfirmer"></BoutonSprite>
 					<HBox styleClass="vide"></HBox>
-		
-
 				<BoutonSprite VBox.vgrow="ALWAYS" texte="Annuler" fx:id="animationAnnuler"></BoutonSprite>
 				</VBox>
 			</HBox>
