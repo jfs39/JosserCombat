@@ -10,10 +10,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.ToggleGroup?>
-<?import JosserCombat.vues.composantes.BoutonSprite?>
+<?import josser_combat_javafx.vues.composantes.BoutonSprite?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:id="canevasSprite" fx:controller="JosserCombat.vues.vuesparametresfx">
+<StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
 	<VBox VBox.vgrow="ALWAYS" styleClass="fenetre">
 	
 	  	<HBox styleClass="titre" VBox.vgrow="ALWAYS">
@@ -37,7 +37,7 @@
 							<ToggleGroup fx:id="langue" />
 						</toggleGroup>
 				</RadioButton>
-			
+			<HBox styleClass="petitVide"></HBox>
 				<RadioButton text="%eng" >
 						<toggleGroup>
 							<ToggleGroup fx:id="langue" />
@@ -54,21 +54,25 @@
 								<Font size="28.0" />
 							</font>
 						</Label>
+								
+					<HBox styleClass="petitVide"></HBox>
 					<HBox HBox.hgrow="ALWAYS" styleClass="slider">
 						<Label  text="%intensite">
 							<font>
 								<Font size="14.0" />
 							</font>
-						</Label>	
+						</Label>
+							
 					
 					<Slider /> 
 					</HBox>
+				<HBox styleClass="petitVide"></HBox>
 							<RadioButton text="%sonOn" >
 								<toggleGroup>
 									<ToggleGroup fx:id="son" />
 								</toggleGroup>
 							</RadioButton>
-	
+				<HBox styleClass="petitVide"></HBox>
 							<RadioButton text="%sonOff" >               
 								<toggleGroup>
 									<ToggleGroup fx:id="son" />

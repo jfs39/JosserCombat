@@ -1,4 +1,4 @@
-package JosserCombat.vues.composantes;
+package josser_combat_javafx.vues.composantes;
 
 import java.io.InputStream;
 

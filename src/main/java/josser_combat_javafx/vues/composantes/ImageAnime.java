@@ -1,4 +1,4 @@
-package JosserCombat.vues.composantes;
+package josser_combat_javafx.vues.composantes;
 
 import commun.debogage.J;
 import javafx.scene.canvas.Canvas;
