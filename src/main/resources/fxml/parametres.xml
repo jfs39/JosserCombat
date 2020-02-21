@@ -13,7 +13,7 @@
 <?import josser_combat_javafx.vues.composantes.BoutonSprite?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="josser_combat_javafx.controleurs.ControleurParametresFX">
 	<VBox VBox.vgrow="ALWAYS" styleClass="fenetre">
 	
 	  	<HBox styleClass="titre" VBox.vgrow="ALWAYS">
@@ -38,9 +38,10 @@
 						</toggleGroup>
 				</RadioButton>
 			<HBox styleClass="petitVide"></HBox>
+	
 				<RadioButton text="%eng" >
 						<toggleGroup>
-							<ToggleGroup fx:id="langue" />
+							<fx:reference source="langue" />
 						</toggleGroup>
 				</RadioButton>
 			</VBox>
@@ -75,18 +76,18 @@
 				<HBox styleClass="petitVide"></HBox>
 							<RadioButton text="%sonOff" >               
 								<toggleGroup>
-									<ToggleGroup fx:id="son" />
+									<fx:reference source="son" />
 								</toggleGroup>
 							</RadioButton>
 				</VBox>
 				
 				<VBox VBox.vgrow="ALWAYS" styleClass="vide"/>
 				<VBox HBox.hgrow="ALWAYS" styleClass="boutons">		
-				<!-- 	<BoutonSprite text="%confirmation" maxWidth="Infinity" VBox.vgrow="ALWAYS"  styleClass="boutonConfirmer"/> -->
+
 				<BoutonSprite VBox.vgrow="ALWAYS" texte="Confirmer" fx:id="animationConfirmer"></BoutonSprite>
 					<HBox styleClass="vide"></HBox>
 		
-				<!-- 	<BoutonSprite text="%annulation" maxWidth="Infinity" VBox.vgrow="ALWAYS" styleClass="boutonAnnuler"/> -->
+
 				<BoutonSprite VBox.vgrow="ALWAYS" texte="Annuler" fx:id="animationAnnuler"></BoutonSprite>
 				</VBox>
 			</HBox>
