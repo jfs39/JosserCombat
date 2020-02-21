@@ -1,4 +1,4 @@
-package JosserCombat;
+package josser_combat_javafx;
 
 import commun.debogage.DoitEtre;
 import commun.debogage.J;

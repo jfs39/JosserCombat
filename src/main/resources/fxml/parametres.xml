@@ -45,7 +45,6 @@
 				</RadioButton>
 			</VBox>
 		</HBox>
-	<!-- 			<Separator /> -->
 	
 			<HBox VBox.vgrow="ALWAYS" styleClass="contenuVolume">
 			
