@@ -1,9 +1,11 @@
 package josser_combat_javafx.vues;
 
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import commun.debogage.J;
+import commun_javafx.ChargeurDeVue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -11,7 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.RadioButton;
-
+import javafx.scene.layout.StackPane;
 import josser_combat_client.vues.VueParametres;
 import josser_combat_javafx.controleurs.ControleurParametresFX;
 
@@ -20,7 +22,10 @@ public class VueParametresFX implements VueParametres, Initializable {
 
 	
 	@FXML
-	private RadioButton sonON, sonOFF;
+	private RadioButton sonON, sonOFF, fr, en;
+	@FXML 
+	private StackPane conteneurPrincipal;
+	
 
 	
 	@Override
@@ -48,6 +53,23 @@ public class VueParametresFX implements VueParametres, Initializable {
 			}
 		});
 		
+		fr.setOnAction(e->{
+			Locale.getDefault();
+			Locale.setDefault(Locale.CANADA_FRENCH);
+			ChargeurDeVue chargeur = new ChargeurDeVue("/fxml/parametres.xml","traductions.chaines","/css/parametres.css");
+			conteneurPrincipal.getChildren().setAll(chargeur.getParent());
+		
+		});
+
+		en.setOnAction(e->{
+			
+				Locale.getDefault();
+				Locale.setDefault(Locale.ENGLISH);
+				ChargeurDeVue chargeur = new ChargeurDeVue("/fxml/parametres.xml","traductions.chaines","/css/parametres.css");
+				conteneurPrincipal.getChildren().setAll(chargeur.getParent());
+
+		});
+
 	}
 
 	@Override
@@ -72,10 +94,17 @@ public class VueParametresFX implements VueParametres, Initializable {
 	}
 	
 	private void initialiserElements() {
+
 		J.appel(this);
 		ControleurParametresFX.playAudio();
 		sonON.setSelected(true);
 		
+
+		
+	}
+	private void setLangue(){
+		
+
 	}
 
 	

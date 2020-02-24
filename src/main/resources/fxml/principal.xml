@@ -2,7 +2,9 @@
 
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Button?>
 
-<VBox xmlns:fx="http://javafx.com/fxml">
-	<Text text="Josser Combat"/>
+<VBox xmlns:fx="http://javafx.com/fxml"  fx:controller="josser_combat_javafx.vues.VuePrincipalFX" fx:id="conteneurPrincipal">
+	<Text text="%test"/>
+	<Button />
 </VBox>
