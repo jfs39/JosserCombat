@@ -4,7 +4,8 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.Button?>
 
-<VBox xmlns:fx="http://javafx.com/fxml"  fx:controller="josser_combat_javafx.vues.VuePrincipalFX" fx:id="conteneurPrincipal">
-	<Text text="%test"/>
-	<Button />
+<VBox VBox.vgrow="ALWAYS" xmlns:fx="http://javafx.com/fxml"  fx:controller="josser_combat_javafx.vues.VueMenuFX" fx:id="conteneurPrincipal">
+	<Text text="Josser Combat" styleClass="logo"/>
+	
+	<Button text="%params" fx:id="boutonParametres"/>
 </VBox>

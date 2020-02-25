@@ -96,7 +96,7 @@ public class VueParametresFX implements VueParametres, Initializable {
 	private void initialiserElements() {
 
 		J.appel(this);
-		ControleurParametresFX.playAudio();
+
 		sonON.setSelected(true);
 		
 

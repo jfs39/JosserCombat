@@ -5,7 +5,7 @@ import commun.debogage.J;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import josser_combat_javafx.controleurs.ControleurParametresFX;
 import commun_javafx.ChargeurDeVue;
 import commun_javafx.Initialisateur;
 
@@ -30,7 +30,7 @@ public class Principal extends Application {
 		J.appel(this);
 		
 		Scene scene = creerScenePrincipale();
-		
+		ControleurParametresFX.playAudio();
 
         afficherFenetre(fenetrePrincipale, scene);
     }
@@ -62,7 +62,7 @@ public class Principal extends Application {
 	private Scene creerScenePrincipale() {
 		
 		J.appel(this);
-		ChargeurDeVue chargeur = new ChargeurDeVue("/fxml/principal.xml","traductions.chaines","/css/parametres.css");
+		ChargeurDeVue chargeur = new ChargeurDeVue("/fxml/principal.xml","traductions.chaines","/css/menuPrincipal.css");
 		Scene scene = chargeur.nouvelleScene(600,400);
 		DoitEtre.nonNul(scene);
 		
