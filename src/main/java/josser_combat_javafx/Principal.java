@@ -1,5 +1,7 @@
 package josser_combat_javafx;
 
+import java.util.Locale;
+
 import commun.debogage.DoitEtre;
 import commun.debogage.J;
 import javafx.application.Application;
@@ -13,6 +15,9 @@ import commun_javafx.ChargeurDeVue;
 import commun_javafx.Initialisateur;
 
 public class Principal extends Application {
+	
+	Parametres parametres = Parametres.getInstance();
+	Locale langueCourante = parametres.genererLangueRandom();
 	
 	static {
 		J.appel(Principal.class);
@@ -34,10 +39,8 @@ public class Principal extends Application {
 		
 		Scene scene = creerScenePrincipale();
 		ControleurParametresFX.playAudio();
-		
-		Parametres parametres = Parametres.getInstance();
-		
-		//String languge = parametres.getLocale();
+
+		parametres.setLangue(langueCourante);
 
         afficherFenetre(fenetrePrincipale, scene);
     }

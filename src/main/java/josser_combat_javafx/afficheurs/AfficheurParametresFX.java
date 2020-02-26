@@ -20,5 +20,6 @@ public class AfficheurParametresFX extends AfficheurParametres<VueParametresFX>{
 		J.appel(this);
 		
 	}
+	
 
 }
