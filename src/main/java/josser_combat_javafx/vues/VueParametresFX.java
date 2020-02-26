@@ -54,20 +54,12 @@ public class VueParametresFX implements VueParametres, Initializable {
 		});
 		
 		fr.setOnAction(e->{
-			Locale.getDefault();
-			Locale.setDefault(Locale.CANADA_FRENCH);
-			ChargeurDeVue chargeur = new ChargeurDeVue("/fxml/parametres.xml","traductions.chaines","/css/parametres.css");
-			conteneurPrincipal.getChildren().setAll(chargeur.getParent());
-		
+
+		rafraichirVue(Locale.CANADA_FRENCH);
 		});
 
 		en.setOnAction(e->{
-			
-				Locale.getDefault();
-				Locale.setDefault(Locale.ENGLISH);
-				ChargeurDeVue chargeur = new ChargeurDeVue("/fxml/parametres.xml","traductions.chaines","/css/parametres.css");
-				conteneurPrincipal.getChildren().setAll(chargeur.getParent());
-
+			rafraichirVue(Locale.ENGLISH);
 		});
 
 	}
@@ -98,14 +90,15 @@ public class VueParametresFX implements VueParametres, Initializable {
 		J.appel(this);
 
 		sonON.setSelected(true);
-		
-
-		
 	}
-	private void setLangue(){
-		
-
+	
+	private void rafraichirVue(Locale locale) {
+		Locale.getDefault();
+		Locale.setDefault(locale);
+		ChargeurDeVue chargeur = new ChargeurDeVue("/fxml/parametres.xml","traductions.chaines","/css/parametres.css");
+		conteneurPrincipal.getChildren().setAll(chargeur.getParent());
 	}
+
 
 	
 }

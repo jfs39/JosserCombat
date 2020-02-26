@@ -29,7 +29,7 @@ public class ControleurParametresFX extends ControleurParametres<VueParametresFX
 	public void demarrer() {
 		J.appel(this);
 		
-		playAudio();
+		//playAudio();
 	}
 	
 	public static void playAudio() {

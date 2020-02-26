@@ -1,6 +1,7 @@
 package josser_combat_javafx.vues.composantes;
 
 import java.io.InputStream;
+import java.util.ResourceBundle;
 
 import commun.debogage.J;
 import commun_javafx.vues.composants.ImageAjustable;
@@ -18,13 +19,13 @@ public class BoutonSprite extends HBox {
 	private String urlJoseph = "/img/Joseph/JosephHit.gif";
 	private String urlYasser="/img/Yasser/YasserHit.gif";
 	
-	public BoutonSprite(@NamedArg("texte") String texte) {
+	public BoutonSprite( @NamedArg("text") String text) {
 		super();
 		J.appel(this);
 		
-		Button bouton = new Button(texte);
+		Button bouton = new Button(text);
 		
-		if (texte.equals("Confirmer")) {
+		if (text.equals("%confirm")) {
 			
 			genererBouton(bouton, "boutonConfirmer");
 			genererImage(urlJoseph);

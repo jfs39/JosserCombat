@@ -84,9 +84,9 @@
 				<VBox VBox.vgrow="ALWAYS" styleClass="vide"/>
 				<VBox HBox.hgrow="ALWAYS" styleClass="boutons">		
 
-				<BoutonSprite VBox.vgrow="ALWAYS" texte="Confirmer" fx:id="animationConfirmer"></BoutonSprite>
+				<BoutonSprite VBox.vgrow="ALWAYS" text="%confirm" fx:id="animationConfirmer"></BoutonSprite>
 					<HBox styleClass="vide"></HBox>
-				<BoutonSprite VBox.vgrow="ALWAYS" texte="Annuler" fx:id="animationAnnuler"></BoutonSprite>
+				<BoutonSprite VBox.vgrow="ALWAYS" text="%cancel" fx:id="animationAnnuler"></BoutonSprite>
 				</VBox>
 			</HBox>
 	</VBox>
