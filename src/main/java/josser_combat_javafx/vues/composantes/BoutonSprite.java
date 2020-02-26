@@ -25,7 +25,7 @@ public class BoutonSprite extends HBox {
 		
 		Button bouton = new Button(text);
 		
-		if (text.equals("%confirm")) {
+		if (text.equals("Confirmer") || text.equals("Confirm") ) {
 			
 			genererBouton(bouton, "boutonConfirmer");
 			genererImage(urlJoseph);
