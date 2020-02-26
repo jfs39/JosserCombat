@@ -39,8 +39,6 @@ public class ControleurParametresFX extends ControleurParametres<VueParametresFX
 		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 		mediaPlayer.play();
 	}
-
-	
 	
 	public static void stopAudio() {
 		

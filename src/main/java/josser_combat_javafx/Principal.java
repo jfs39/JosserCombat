@@ -5,7 +5,10 @@ import commun.debogage.J;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import josser_combat.modeles.partie.Parametres;
 import josser_combat_javafx.controleurs.ControleurParametresFX;
+import josser_combat_javafx.vues.VueMenuFX;
+import josser_combat_javafx.vues.VueParametresFX;
 import commun_javafx.ChargeurDeVue;
 import commun_javafx.Initialisateur;
 
@@ -31,6 +34,10 @@ public class Principal extends Application {
 		
 		Scene scene = creerScenePrincipale();
 		ControleurParametresFX.playAudio();
+		
+		Parametres parametres = Parametres.getInstance();
+		
+		//String languge = parametres.getLocale();
 
         afficherFenetre(fenetrePrincipale, scene);
     }
