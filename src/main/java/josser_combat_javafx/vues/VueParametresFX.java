@@ -13,14 +13,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Slider;
 import javafx.scene.layout.StackPane;
+import josser_combat.modeles.partie.Parametres;
 import josser_combat_client.vues.VueParametres;
+import josser_combat_javafx.afficheurs.AfficheurMenuFX;
 import josser_combat_javafx.controleurs.ControleurParametresFX;
 
 
 public class VueParametresFX implements VueParametres, Initializable {
 
-	
+	@FXML
+	private Slider sliderVolume;
 	@FXML
 	private RadioButton sonON, sonOFF, fr, en;
 	@FXML 
@@ -60,6 +64,12 @@ public class VueParametresFX implements VueParametres, Initializable {
 
 		en.setOnAction(e->{
 			rafraichirVue(Locale.ENGLISH);
+		});
+		
+		sliderVolume.valueProperty().addListener(e->{
+			ControleurParametresFX.changerVolume(sliderVolume.getValue());
+			
+			ControleurParametresFX.mediaPlayer.setVolume(Parametres.getInstance().getGradateurSon());
 		});
 
 	}

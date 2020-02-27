@@ -13,6 +13,8 @@ public final class Parametres extends Modele<ParametresLectureSeule> implements 
 	
 	private boolean son;
 	
+	private double gradateurSon;
+	
 	private Locale langue;
 	
 	public static Parametres getInstance() {
@@ -41,6 +43,16 @@ public final class Parametres extends Modele<ParametresLectureSeule> implements 
 	
 	public boolean getSon() {
 		return this.son;
+	}
+	
+	public void setGradateurSon(double son) {
+		this.gradateurSon = son;
+		
+	}
+	public double getGradateurSon() {
+		J.appel(this);
+		return this.gradateurSon;
+		
 	}
 	
 	public Locale genererLangueRandom() {

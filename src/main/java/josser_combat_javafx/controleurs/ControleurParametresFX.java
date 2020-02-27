@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import josser_combat.modeles.partie.Parametres;
 import josser_combat_client.controleurs.ControleurParametres;
 import josser_combat_javafx.afficheurs.AfficheurParametresFX;
 import josser_combat_javafx.vues.VueParametresFX;
@@ -17,7 +18,7 @@ public class ControleurParametresFX extends ControleurParametres<VueParametresFX
 
 	
 	private static Media media;
-	private static MediaPlayer mediaPlayer;
+	public static MediaPlayer mediaPlayer;
 	
 	private static final String MEDIA_URL = "src/main/resources/sound/soundtrack.mp3";
 	@Override
@@ -38,6 +39,10 @@ public class ControleurParametresFX extends ControleurParametres<VueParametresFX
 		mediaPlayer = new MediaPlayer(media);
 		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 		mediaPlayer.play();
+	}
+	
+	public static void changerVolume(double niveau) {
+		Parametres.getInstance().setGradateurSon(niveau);
 	}
 	
 	public static void stopAudio() {

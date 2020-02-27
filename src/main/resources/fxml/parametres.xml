@@ -65,7 +65,7 @@
 						</Label>
 							
 					
-					<Slider /> 
+					<Slider fx:id="sliderVolume" /> 
 					</HBox>
 				<HBox styleClass="petitVide"></HBox>
 							<RadioButton text="%sonOn" fx:id="sonON">
