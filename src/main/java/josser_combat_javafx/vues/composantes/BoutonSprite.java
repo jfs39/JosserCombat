@@ -1,8 +1,6 @@
 package josser_combat_javafx.vues.composantes;
 
 import java.io.InputStream;
-import java.util.ResourceBundle;
-
 import commun.debogage.J;
 import commun_javafx.vues.composants.ImageAjustable;
 import javafx.beans.NamedArg;
@@ -11,29 +9,32 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 
 public class BoutonSprite extends HBox {
 
 	private ImageView imageView;
 	private String urlJoseph = "/img/Joseph/JosephHit.gif";
 	private String urlYasser="/img/Yasser/YasserHit.gif";
-	
+	String id = "";
 	public BoutonSprite( @NamedArg("text") String text) {
 		super();
 		J.appel(this);
 		
 		Button bouton = new Button(text);
-		
+	
 		if (text.equals("Confirmer") || text.equals("Confirm") ) {
 			
 			genererBouton(bouton, "boutonConfirmer");
 			genererImage(urlJoseph);
+			bouton.setId("confirmer");
+			
 			
 		} else {
 			
 			genererBouton(bouton,"boutonAnnuler");
 			genererImage(urlYasser);
+			bouton.setId("cancel");
+			
 		}
 		
 		bouton.setOnMouseEntered((e)->{
@@ -45,6 +46,7 @@ public class BoutonSprite extends HBox {
 			imageView.setStyle("-fx-opacity:0;");
 			
 		});
+		
 		}
 	
 		private void genererImage(String url) {
@@ -68,5 +70,6 @@ public class BoutonSprite extends HBox {
 			bouton.setMinWidth(95);
 			bouton.setMinHeight(45);
 		}
+		
 
 }

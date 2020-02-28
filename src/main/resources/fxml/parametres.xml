@@ -32,14 +32,14 @@
 					</font>
 				</Label>
 			
-				<RadioButton text="%fr" fx:id="fr">
+				<RadioButton text="%fr" fx:id="radioFR">
 						<toggleGroup>
 							<ToggleGroup fx:id="langue" />
 						</toggleGroup>
 				</RadioButton>
 			<HBox styleClass="petitVide"></HBox>
 	
-				<RadioButton text="%eng" fx:id="en">
+				<RadioButton text="%eng" fx:id="radioEN">
 						<toggleGroup>
 							<fx:reference source="langue" />
 						</toggleGroup>

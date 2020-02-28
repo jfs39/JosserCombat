@@ -9,13 +9,17 @@ import josser_combat_javafx.Constantes;
 
 public final class Parametres extends Modele<ParametresLectureSeule> implements ParametresLectureSeule{
 
+
+
 	private static final Parametres instance = new Parametres();
 	
-	private boolean son;
+	private boolean sonON = true ,sonOFF= false;
 	
 	private double gradateurSon;
 	
 	private Locale langue;
+	
+	private double valeurCourante = Constantes.VALEUR_DEFAUT_SON;
 	
 	public static Parametres getInstance() {
 		J.appel(Parametres.class);
@@ -37,12 +41,12 @@ public final class Parametres extends Modele<ParametresLectureSeule> implements 
 		
 	}
 	
-	public void setSon(boolean son) {
-		this.son = son;
+	public void setSonON(boolean son) {
+		this.sonON = son;
 	}
 	
-	public boolean getSon() {
-		return this.son;
+	public boolean ifSonON() {
+		return this.sonON;
 	}
 	
 	public void setGradateurSon(double son) {
@@ -53,6 +57,22 @@ public final class Parametres extends Modele<ParametresLectureSeule> implements 
 		J.appel(this);
 		return this.gradateurSon;
 		
+	}
+	
+	public double getValeurCouranteSon() {
+		return valeurCourante;
+	}
+
+	public void setValeurCourante(double valeurCourante) {
+		this.valeurCourante = valeurCourante;
+	}
+	
+	public boolean isSonOFF() {
+		return this.sonOFF;
+	}
+
+	public void setSonOFF(boolean sonOFF) {
+		this.sonOFF = sonOFF;
 	}
 	
 	public Locale genererLangueRandom() {

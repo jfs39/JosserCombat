@@ -10,7 +10,8 @@ import josser_combat_javafx.vues.VueParametresFX;
 
 public class AfficheurParametresFX extends AfficheurParametres<VueParametresFX>{
 
-	@FXML StackPane conteneurPrincipal;
+	@FXML
+	private StackPane conteneurPrincipal;
 	@Override
 	public void initialiserAffichage(ParametresLectureSeule modeleLectureSeule, VueParametresFX vue) {
 		// TODO Auto-generated method stub
@@ -26,6 +27,13 @@ public class AfficheurParametresFX extends AfficheurParametres<VueParametresFX>{
 		conteneurPrincipal.getChildren().setAll(chargeur.getParent());
 		
 		
+		
+	}
+	
+	public void rafraichirVersMenuPrincipal() {
+		J.appel(AfficheurParametresFX.class);
+		ChargeurDeVue<VueParametresFX> chargeur = new ChargeurDeVue<VueParametresFX>("/fxml/principal.xml","traductions.chaines","/css/menuPrincipal.css");
+		conteneurPrincipal.getChildren().setAll(chargeur.getParent());
 		
 	}
 	

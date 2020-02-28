@@ -1,9 +1,7 @@
 package josser_combat_javafx.vues;
 
 import java.net.URL;
-import java.util.Locale;
 import java.util.ResourceBundle;
-import commun.debogage.DoitEtre;
 import commun.debogage.J;
 import commun_javafx.ChargeurDeVue;
 import javafx.fxml.FXML;
@@ -11,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import josser_combat_client.vues.VueMenu;
-import josser_combat_javafx.Constantes;
 
 
 public class VueMenuFX implements VueMenu, Initializable{

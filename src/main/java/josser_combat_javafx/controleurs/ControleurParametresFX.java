@@ -1,12 +1,7 @@
 package josser_combat_javafx.controleurs;
 
 import java.io.File;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import commun.debogage.J;
-import javafx.fxml.Initializable;
-import javafx.scene.control.RadioButton;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import josser_combat.modeles.partie.Parametres;
@@ -29,12 +24,10 @@ public class ControleurParametresFX extends ControleurParametres<VueParametresFX
 	@Override
 	public void demarrer() {
 		J.appel(this);
-		
-		//playAudio();
 	}
 	
 	public static void playAudio() {
-		//J.appel(this);
+		J.appel(ControleurParametresFX.class);
 		media = new Media(new File(MEDIA_URL).toURI().toString());
 		mediaPlayer = new MediaPlayer(media);
 		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
@@ -42,11 +35,12 @@ public class ControleurParametresFX extends ControleurParametres<VueParametresFX
 	}
 	
 	public static void changerVolume(double niveau) {
+		J.appel(ControleurParametresFX.class);
 		Parametres.getInstance().setGradateurSon(niveau);
 	}
 	
 	public static void stopAudio() {
-		
+		J.appel(ControleurParametresFX.class);
 		mediaPlayer.stop();
 	}
 
