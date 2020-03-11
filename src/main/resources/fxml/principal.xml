@@ -6,9 +6,10 @@
 <?import javafx.scene.layout.StackPane?>
 
 <StackPane xmlns:fx="http://javafx.com/fxml"  fx:controller="josser_combat_javafx.vues.VueMenuFX" fx:id="conteneurPrincipal">
-	<VBox VBox.vgrow="ALWAYS" >
+	<VBox VBox.vgrow="ALWAYS" styleClass="fenetre">
 		<Text text="Josser Combat" styleClass="logo"/>
-		
+		<Button text="%jeuHL" fx:id="boutonjeuHL"/>
+		<VBox styleClass="vide" />
 		<Button text="%params" fx:id="boutonParametres"/>
 	</VBox>
 </StackPane>

@@ -18,10 +18,8 @@ Button{
   -fx-padding: 15px 32px;
 }
 .fenetre{
-	-fx-background-image: url("../../../src/main/resources/img/222.gif");
+	 	-fx-background-image: url("../../../src/main/resources/img/222.gif");
 	-fx-background-image: url("/img/222.gif");
-	
-	-fx-background-size:stretch;
 }
 Button:hover{
 	

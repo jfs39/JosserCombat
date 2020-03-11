@@ -17,7 +17,7 @@ public class VueMenuFX implements VueMenu, Initializable{
 	private StackPane conteneurPrincipal;
 	
 	@FXML
-	private Button boutonParametres;
+	private Button boutonParametres,boutonjeuHL;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -27,6 +27,12 @@ public class VueMenuFX implements VueMenu, Initializable{
 		boutonParametres.setOnAction(e->{
 		
 			ChargeurDeVue<VueParametresFX> chargeur = new ChargeurDeVue<VueParametresFX>("/fxml/parametres.xml","traductions.chaines","/css/parametres.css");
+			conteneurPrincipal.getChildren().setAll(chargeur.getParent());
+			
+		});
+		boutonjeuHL.setOnAction(e->{
+		
+			ChargeurDeVue<VueParametresFX> chargeur = new ChargeurDeVue<VueParametresFX>("/fxml/partieLocale.xml","traductions.chaines","/css/partieLocale.css");
 			conteneurPrincipal.getChildren().setAll(chargeur.getParent());
 			
 		});
