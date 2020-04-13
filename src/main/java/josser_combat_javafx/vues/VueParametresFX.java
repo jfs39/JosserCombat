@@ -155,4 +155,10 @@ public class VueParametresFX implements VueParametres, Initializable {
 		ChargeurDeVue<VueParametresFX> chargeur = new ChargeurDeVue<VueParametresFX>("/fxml/parametres.xml","traductions.chaines","/css/parametres.css");
 		conteneurPrincipal.getChildren().setAll(chargeur.getParent());
 	}
+
+	@Override
+	public void verifierCommandesPossibles() {
+		// TODO Auto-generated method stub
+		
+	}
 }

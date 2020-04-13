@@ -50,6 +50,12 @@ public class VueMenuFX implements VueMenu, Initializable{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void verifierCommandesPossibles() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

@@ -14,18 +14,16 @@ public final class PartieLocale extends Modele<PartieLocaleLectureSeule> impleme
 	private static final PartieLocale instance = new PartieLocale();
 	
 
-	
-	public static PartieLocale getInstance() {
-		J.appel(PartieLocale.class);
-		return instance;
-	}
-	
-	private PartieLocale() {
-		J.appel(this);
-	}
-	
-	
 		
+		public static PartieLocale getInstance() {
+			J.appel(PartieLocale.class);
+			return instance;
+		}
+		
+		private PartieLocale() {
+			J.appel(this);
+		}
+	
 	}
 	
 	
