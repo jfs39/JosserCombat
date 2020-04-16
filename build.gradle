@@ -29,7 +29,9 @@ repositories {
 
 dependencies {
 
-
+    compile project(':commun')
+    compile project(':commun_javafx')
+    compile project(':commun_client')
 }
 
 task(joueur01, dependsOn: 'classes', type: JavaExec) {
