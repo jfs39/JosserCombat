@@ -29,26 +29,27 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 	@FXML
 	ImageView imageJoueurDeux;
 	@FXML
-	StackPane conteneurPrincipal;
+	ImageView vieJoueurUn;
 	@FXML
-	HBox coteJoueurUn;
+	ImageView vieJoueurDeux;
+	@FXML
+	StackPane conteneurPrincipal;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		J.appel(this);
-		imageJoueurUn = chargerPersonnage("Joseph");
-		imageJoueurDeux = chargerPersonnage("Yasser");
-		conteneurPrincipal.getChildren().addAll(imageJoueurUn,imageJoueurDeux);
-		StackPane.setAlignment(imageJoueurUn, Pos.BOTTOM_LEFT);
-		StackPane.setAlignment(imageJoueurDeux, Pos.BOTTOM_RIGHT);
 		
-		
-		imageJoueurUn.setOnKeyPressed(new EventHandler<KeyEvent>(){
+		mettreJoueurs();
+		chargerBarreDeVie(150,50);
+		conteneurPrincipal.getChildren().addAll(imageJoueurUn,imageJoueurDeux,vieJoueurUn,vieJoueurDeux);
+
+		imageJoueurUn.setOnKeyReleased(new EventHandler<KeyEvent>(){
 			  @Override
 			  public void handle(KeyEvent event){
-
+				  J.appel(this);
+					System.out.println(event.getCode());
 			    if (event.getCode() == KeyCode.D) {
-			    	System.out.println(event.getCode());
+			    
 			        imageJoueurUn.setLayoutX(imageJoueurUn.getLayoutX() + 5);
 			    } else if (event.getCode() == KeyCode.A) {
 			        imageJoueurUn.setLayoutX(imageJoueurUn.getLayoutX() - 5);
@@ -61,6 +62,13 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 //		};
 //		conteneurPrincipal.getScene().addEventHandler(KeyEvent.KEY_PRESSED, handler1);
 		
+	}
+
+	private void mettreJoueurs() {
+		imageJoueurUn = chargerPersonnage("Joseph");
+		imageJoueurDeux = chargerPersonnage("Yasser");
+		StackPane.setAlignment(imageJoueurUn, Pos.BOTTOM_LEFT);
+		StackPane.setAlignment(imageJoueurDeux, Pos.BOTTOM_RIGHT);
 	}
 
 	@Override
@@ -89,6 +97,27 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 		ImageView imagePersonnage = new ImageView(image);
 		
 		return imagePersonnage;
+	}
+	
+	private ImageView chargerImage(String image) {
+		
+		String url = "/img/Other/"+image+".png";
+		InputStream streamImage = ImageAjustable.class.getResourceAsStream(url);
+		Image monImage = new Image(streamImage);
+		ImageView imagePersonnage = new ImageView(monImage);
+		
+		return imagePersonnage;
+	}
+	
+	private void chargerBarreDeVie(double largeur, double hauteur) {
+		vieJoueurUn = chargerImage("life4");
+		vieJoueurDeux = chargerImage("life4");
+		vieJoueurDeux.setFitWidth(largeur);
+		vieJoueurDeux.setFitHeight(hauteur);
+		vieJoueurUn.setFitWidth(largeur);
+		vieJoueurUn.setFitHeight(hauteur);
+		StackPane.setAlignment(vieJoueurDeux,Pos.TOP_RIGHT);
+		StackPane.setAlignment(vieJoueurUn,Pos.TOP_LEFT);
 	}
 
 }

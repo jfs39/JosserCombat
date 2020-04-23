@@ -18,10 +18,12 @@
 
 <StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="josser_combat_javafx.vues.VuePartieLocaleFX" fx:id="conteneurPrincipal">
 <HBox HBox.hgrow="ALWAYS" styleClass="background">
-	<HBox HBox.hgrow="ALWAYS" fx:id="coteJoueurUn">
+	<VBox HBox.hgrow="ALWAYS" fx:id="panneau">
+	<ImageView fx:id="vieJoueurUn"/>
+	<ImageView fx:id="vieJoueurDeux"/>
+	</VBox>
+	<HBox HBox.hgrow="ALWAYS" fx:id="battleGround">
 		<ImageView fx:id="imageJoueurUn"/>
-	</HBox>
-	<HBox HBox.hgrow="ALWAYS" fx:id="coteJoueurDeux">
 		<ImageView fx:id="imageJoueurDeux"/>
 	</HBox>
 </HBox>

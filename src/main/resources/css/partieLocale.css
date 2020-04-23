@@ -8,11 +8,12 @@ VBox{
 	-fx-background-size:stretch;
 }
 HBox{
-	-fx-border-style: none none dotted none;
--fx-border-color:green;
+	/*-fx-border-style: none none dotted none;
+-fx-border-color:green;*/
 }
 
-ImageView{
+.battleGround{
+
 	-fx-border-style: none none dotted none;
 	-fx-border-color:red;
 }
