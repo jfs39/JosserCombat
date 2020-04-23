@@ -32,7 +32,7 @@ public class VueMenuFX implements VueMenu, Initializable{
 		});
 		boutonjeuHL.setOnAction(e->{
 		
-			ChargeurDeVue<VueParametresFX> chargeur = new ChargeurDeVue<VueParametresFX>("/fxml/partieLocale.xml","traductions.chaines","/css/partieLocale.css");
+			ChargeurDeVue<VuePartieLocaleFX> chargeur = new ChargeurDeVue<VuePartieLocaleFX>("/fxml/partieLocale.xml","traductions.chaines","/css/partieLocale.css");
 			conteneurPrincipal.getChildren().setAll(chargeur.getParent());
 			
 		});

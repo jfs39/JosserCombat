@@ -3,25 +3,16 @@ VBox{
     -fx-alignment:center;
 }
 
-.logo{
-	-fx-font-size:30px;
+.background{
+	-fx-background-image: url("/img/Other/background.png");
+	-fx-background-size:stretch;
 }
-.vide{
-	-fx-min-height: 20px;
-	-fx-min-width:25px;
+HBox{
+	-fx-border-style: none none dotted none;
+-fx-border-color:green;
 }
-Button{
-	
-  -fx-background-color: #f2504e; 
-  -fx-border: none;
-  -fx-color: white;
-  -fx-padding: 15px 32px;
-}
-.fenetre{
-	 	-fx-background-image: url("../../../src/main/resources/img/222.gif");
-	-fx-background-image: url("/img/222.gif");
-}
-Button:hover{
-	
-	-fx-background-color: #b81412; 
+
+ImageView{
+	-fx-border-style: none none dotted none;
+	-fx-border-color:red;
 }

@@ -12,11 +12,21 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import josser_combat_javafx.vues.composantes.BoutonSprite?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
 
 <StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="josser_combat_javafx.vues.VuePartieLocaleFX" fx:id="conteneurPrincipal">
+<HBox HBox.hgrow="ALWAYS" styleClass="background">
+	<HBox HBox.hgrow="ALWAYS" fx:id="coteJoueurUn">
+		<ImageView fx:id="imageJoueurUn"/>
+	</HBox>
+	<HBox HBox.hgrow="ALWAYS" fx:id="coteJoueurDeux">
+		<ImageView fx:id="imageJoueurDeux"/>
+	</HBox>
+</HBox>
 
-<VBox>
-</VBox>
+
 
 
 </StackPane>
