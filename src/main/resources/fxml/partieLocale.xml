@@ -13,7 +13,10 @@
 <?import josser_combat_javafx.vues.composantes.BoutonSprite?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:id="conteneurPrincipal">
+<StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="josser_combat_javafx.vues.VuePartieLocaleFX" fx:id="conteneurPrincipal">
+
+<VBox>
+</VBox>
 
 
 </StackPane>
