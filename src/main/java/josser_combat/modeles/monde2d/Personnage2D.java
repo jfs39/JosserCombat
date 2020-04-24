@@ -20,6 +20,9 @@ public class Personnage2D extends Objet2D {
 	private final double VITESSE_SAUT_METRES_PAR_SECONDE = 10;
 
 	private final double VITESSE_MOUVEMENT_METRES_PAR_SECONDE = 5;
+	
+	private boolean enMouvement = false;
+	private boolean enSaut = false;
 
 	public Personnage2D(double centreXMetres, 
 			double centreYMetres, 
@@ -46,16 +49,23 @@ public class Personnage2D extends Objet2D {
 
 		this.accelerationYMetresSecondesCarres = - accelerationGraviteTerrestreMetresSecondesCarres;
 	}
+	
+	private boolean siPersonnageAuPlancher() {
+		return centreYMetres <= (hauteurMetres/2);
+	}
 
 	@Override
 	public void reagirAuTempsQuiPasse(double secondesEcoulees) {
 		super.reagirAuTempsQuiPasse(secondesEcoulees);
 		J.appel(this);
 		
-		// Ajouter un plancher!
-		if(centreYMetres <= (hauteurMetres/2)) {
-			
+		if(siPersonnageAuPlancher()) {
 			centreYMetres = hauteurMetres/2;
+			enSaut = false;
+			
+			if(!enMouvement) {
+				vitesseXMetresSecondes = 0;
+			}
 		}
 	}
 	@Override
@@ -78,26 +88,42 @@ public class Personnage2D extends Objet2D {
 		J.appel(this);
 		
 		// on peut sauter uniquement lorsqu'au plancher!
-		if(centreYMetres <= (hauteurMetres / 2)) {
+		if(siPersonnageAuPlancher()) {
 			vitesseYMetresSecondes = VITESSE_SAUT_METRES_PAR_SECONDE;
+			enSaut = true;
 		}
 	}
 
 	public void initierMouvement(Direction direction) {
 		J.appel(this);
 		
-		switch(direction) {
-		
-		case GAUCHE:
-			vitesseXMetresSecondes = - VITESSE_MOUVEMENT_METRES_PAR_SECONDE;
-			break;
+		if(!enMouvement) {
+			enMouvement = true;
+			
+			switch(direction) {
+			
+				case GAUCHE:
+					vitesseXMetresSecondes = - VITESSE_MOUVEMENT_METRES_PAR_SECONDE;
+					break;
 
-		case DROITE:
-			vitesseXMetresSecondes =  VITESSE_MOUVEMENT_METRES_PAR_SECONDE;
-			break;
-		
+				case DROITE:
+					vitesseXMetresSecondes =  VITESSE_MOUVEMENT_METRES_PAR_SECONDE;
+					break;
+				}
 		}
+	}
+
+	public void stopperMouvement() {
+		J.appel(this);
 		
+		if(enMouvement) {
+			enMouvement = false;
+			
+			if(!enSaut) {
+				vitesseXMetresSecondes = 0;
+			}
+		}
+
 	}
 
 }

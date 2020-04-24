@@ -20,6 +20,8 @@ import josser_combat_client.commandes.bouger.Bouger;
 import josser_combat_client.commandes.bouger.BougerPourEnvoi;
 import josser_combat_client.commandes.sauter.Sauter;
 import josser_combat_client.commandes.sauter.SauterPourEnvoi;
+import josser_combat_client.commandes.stopper.Stopper;
+import josser_combat_client.commandes.stopper.StopperPourEnvoi;
 import josser_combat_client.vues.VuePartieLocale;
 import josser_combat_javafx.vues.composantes.MonDessin2D;
 
@@ -31,6 +33,7 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 	
 	private SauterPourEnvoi sauterPourEnvoi;
 	private BougerPourEnvoi bougerPourEnvoi;
+	private StopperPourEnvoi stopperPourEnvoi;
 	
 	Set<KeyCode> touchesEnfoncees = new HashSet<>();
 
@@ -50,6 +53,7 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 		
 		sauterPourEnvoi = FabriqueCommande.obtenirCommandePourEnvoi(Sauter.class);
 		bougerPourEnvoi = FabriqueCommande.obtenirCommandePourEnvoi(Bouger.class);
+		stopperPourEnvoi = FabriqueCommande.obtenirCommandePourEnvoi(Stopper.class);
 	}
 
 	@Override
@@ -99,6 +103,13 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 				J.appel(this);
 				
 				touchesEnfoncees.remove(event.getCode());
+
+				// arrêter de bouger le personnage à GAUCHE
+				if(event.getCode() == KeyCode.A || event.getCode() == KeyCode.D ) {
+					
+					stopperPourEnvoi.setCadran(Cadran.GAUCHE);
+					stopperPourEnvoi.envoyerCommande();
+				}
 			}
 		});
 	}

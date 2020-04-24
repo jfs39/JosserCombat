@@ -66,6 +66,15 @@ public final class PartieLocale extends Modele<PartieLocaleLectureSeule> impleme
 
 		Personnage2D personnage = lesPersonnages.get(cadran);
 		personnage.initierMouvement(direction);
+	}
+
+
+
+	public void stopperMouvement(Cadran cadran) {
+		J.appel(this);
+
+		Personnage2D personnage = lesPersonnages.get(cadran);
+		personnage.stopperMouvement();
 		
 	}
 

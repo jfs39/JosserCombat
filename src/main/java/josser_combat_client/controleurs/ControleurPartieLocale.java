@@ -10,6 +10,8 @@ import josser_combat_client.commandes.bouger.Bouger;
 import josser_combat_client.commandes.bouger.BougerRecue;
 import josser_combat_client.commandes.sauter.Sauter;
 import josser_combat_client.commandes.sauter.SauterRecue;
+import josser_combat_client.commandes.stopper.Stopper;
+import josser_combat_client.commandes.stopper.StopperRecue;
 import josser_combat_client.vues.VuePartieLocale;
 
 public abstract class ControleurPartieLocale <V extends VuePartieLocale, A extends AfficheurPartieLocale<V>>
@@ -31,12 +33,21 @@ extends ControleurModeleVue<PartieLocaleLectureSeule,PartieLocale,V,A>{
 		});
 		
 		installerRecepteurCommande(Bouger.class, new RecepteurCommandeMVC<BougerRecue>() {
-
 			@Override
 			public void executerCommandeMVC(BougerRecue commande) {
 				J.appel(this);
 				
 				modele.initierMouvement(commande.getCadran(), commande.getDirection());
+			}
+		});
+		
+		installerRecepteurCommande(Stopper.class, new RecepteurCommandeMVC<StopperRecue>() {
+			@Override
+			public void executerCommandeMVC(StopperRecue commande) {
+				J.appel(this);
+				
+				modele.stopperMouvement(commande.getCadran());
+				
 			}
 		});
 
