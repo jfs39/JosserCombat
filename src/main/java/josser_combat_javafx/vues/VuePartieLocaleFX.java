@@ -5,12 +5,15 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import commun.debogage.J;
 import commun_javafx.ChargeurDeVue;
+import commun_javafx.vues.composants.CanvasAjustable;
 import commun_javafx.vues.composants.ImageAjustable;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -34,64 +37,35 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 	ImageView vieJoueurDeux;
 	@FXML
 	StackPane conteneurPrincipal;
+	@FXML
+	Canvas canvasPartie;
 	
 	ImageView punchJoseph;
 	
+	ImageView punchYasser;
+	
+	GraphicsContext gc;
+	
+	/*Tout mon code en commentaire est en rapport au Canevas,
+	 *  je suis extrêmement confus sur quoi faire au sujet de comment bien implémenter ma composante et pourquoi mon contenu ne s'affiche pas*/
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		J.appel(this);
-		
-		mettreJoueurs();
+		placerImagesJoueurs();
 		initialiserCoups();
 		chargerBarreDeVie(150,50);
-		conteneurPrincipal.getChildren().addAll(imageJoueurUn,imageJoueurDeux,vieJoueurUn,vieJoueurDeux);
-		conteneurPrincipal.addEventHandler(KeyEvent.ANY, keyListener);
-
-//		conteneurPrincipal.setOnKeyPressed(new EventHandler<KeyEvent>(){
-//			  @Override
-//			  public void handle(KeyEvent event){
-//				  J.appel(this);
-//					System.out.println(event.getCode());
-//			    if (event.getCode() == KeyCode.D) {
-//			    
-//			        imageJoueurUn.setLayoutX(imageJoueurUn.getLayoutX() + 5);
-//			    } else if (event.getCode() == KeyCode.A) {
-//			    	imageJoueurUn.setLayoutX(imageJoueurUn.getLayoutX() - 5);
-//			    }
-//			  }
-//			});
 		
-//		EventHandler<KeyEvent> handler1 = key -> {
-//			imageJoueurUn.setLayoutX(imageJoueurUn.getLayoutX() + 5);
-//		};
-//		conteneurPrincipal.getScene().addEventHandler(KeyEvent.KEY_PRESSED, handler1);
-		
-		
-		conteneurPrincipal.setOnMousePressed(e->{
-			imageJoueurUn.setOpacity(0);
-			punchJoseph.setOpacity(100);
-		});
-		
-		conteneurPrincipal.setOnMouseReleased(e->{
-			imageJoueurUn.setOpacity(100);
-			punchJoseph.setOpacity(0);
-		});
-		
+		installerCapteursEvenementsUsager();
+	//	canvasPartie = new Canvas();
+		// gc = canvasPartie.getGraphicsContext2D();
+		// Image img = genererImageJoueur("Joseph");
+		// gc.drawImage(img, img.getWidth(), img.getHeight());
+		 conteneurPrincipal.getChildren().addAll(imageJoueurUn,imageJoueurDeux,vieJoueurUn,vieJoueurDeux);
 	}
-	private EventHandler<KeyEvent> keyListener = new EventHandler<KeyEvent>() {
-	    @Override
-	    public void handle(KeyEvent event) {
-	        if(event.getCode() == KeyCode.D || event.getCode() == KeyCode.A) {
-	        	imageJoueurUn.setLayoutX(imageJoueurUn.getLayoutX() + 5);
-	        } 
-	        else if(event.getCode() == KeyCode.SPACE) {
-	            
-	        }
-	        event.consume();
-	    }
-	};
+
 
 	private void initialiserCoups() {
+		J.appel(this);
 		String url = "/img/Joseph/JosephPunch.png";
 		InputStream streamImage = ImageAjustable.class.getResourceAsStream(url);
 		Image image = new Image(streamImage);
@@ -102,32 +76,50 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 		
 	}
 
-	private void mettreJoueurs() {
+	private void placerImagesJoueurs() {
+		J.appel(this);
 		imageJoueurUn = chargerPersonnage("Joseph");
 		imageJoueurDeux = chargerPersonnage("Yasser");
 		StackPane.setAlignment(imageJoueurUn, Pos.BOTTOM_LEFT);
 		StackPane.setAlignment(imageJoueurDeux, Pos.BOTTOM_RIGHT);
 	}
-
+	
+/*Méthode qui génère (possiblement) mon image afin de la dessiner avec mon Canevas*/
+//	private Image genererImageJoueur(String personnage) {
+//		String url = "/img/"+personnage+"/"+personnage+".png";
+//		InputStream streamImage = ImageAjustable.class.getResourceAsStream(url);
+//		return new Image(streamImage);
+//	};
+	
 	@Override
 	public void obtenirCommandesPourEnvoi() {
-		// TODO Auto-generated method stub
+		J.appel(this);
 		
 	}
 
 	@Override
 	public void installerCapteursEvenementsUsager() {
-		// TODO Auto-generated method stub
+		J.appel(this);
+		conteneurPrincipal.setOnMousePressed(e->{
+			imageJoueurUn.setOpacity(0);
+			punchJoseph.setOpacity(100);
+		});
 		
+		conteneurPrincipal.setOnMouseReleased(e->{
+			imageJoueurUn.setOpacity(100);
+			punchJoseph.setOpacity(0);
+		});	
 	}
 
 	@Override
 	public void verifierCommandesPossibles() {
-		// TODO Auto-generated method stub
+		J.appel(this);
+		//Insérer si une telle commande est possible (EX: peux plus se déplacer dans un mur)
 		
 	}
 	
 	private ImageView chargerPersonnage(String personnage) {
+		J.appel(this);
 		
 		String url = "/img/"+personnage+"/"+personnage+".png";
 		InputStream streamImage = ImageAjustable.class.getResourceAsStream(url);
@@ -138,6 +130,7 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 	}
 	
 	private ImageView chargerImage(String image) {
+		J.appel(this);
 		
 		String url = "/img/Other/"+image+".png";
 		InputStream streamImage = ImageAjustable.class.getResourceAsStream(url);
@@ -148,6 +141,7 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 	}
 	
 	private void chargerBarreDeVie(double largeur, double hauteur) {
+		J.appel(this);
 		vieJoueurUn = chargerImage("life4");
 		vieJoueurDeux = chargerImage("life4");
 		vieJoueurDeux.setFitWidth(largeur);

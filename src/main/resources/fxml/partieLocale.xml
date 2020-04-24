@@ -14,18 +14,21 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.canvas.GraphicsContext?>
+<?import josser_combat_javafx.vues.composantes.CanevasAjustable?>
 
 <StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="josser_combat_javafx.vues.VuePartieLocaleFX" fx:id="conteneurPrincipal">
 <HBox HBox.hgrow="ALWAYS" styleClass="background">
-	<VBox HBox.hgrow="ALWAYS" fx:id="panneau">
-	<ImageView fx:id="vieJoueurUn"/>
-	<ImageView fx:id="vieJoueurDeux"/>
-	</VBox>
-	<HBox HBox.hgrow="ALWAYS" fx:id="battleGround">
-		<ImageView fx:id="imageJoueurUn"/>
-		<ImageView fx:id="imageJoueurDeux"/>
-	</HBox>
+	<CanevasAjustable fx:id="canevasPartie"></CanevasAjustable>
+		<VBox HBox.hgrow="ALWAYS" fx:id="panneau">
+			<ImageView fx:id="vieJoueurUn"/>
+			<ImageView fx:id="vieJoueurDeux"/>
+		</VBox>
+		<HBox HBox.hgrow="ALWAYS" fx:id="battleGround">
+			<ImageView fx:id="imageJoueurUn"/>
+			<ImageView fx:id="imageJoueurDeux"/>
+		</HBox>
 </HBox>
 
 
