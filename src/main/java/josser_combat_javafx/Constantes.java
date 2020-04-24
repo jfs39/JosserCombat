@@ -5,4 +5,6 @@ public class Constantes {
 	
 	public static final double VALEUR_DEFAUT_SON = 35;
 
+	public static final double FPS_MAX = 120;
+
 }

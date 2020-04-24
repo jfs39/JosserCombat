@@ -1,68 +1,30 @@
 package josser_combat_javafx.vues;
 
-import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import commun.debogage.DoitEtre;
 import commun.debogage.J;
-import commun_javafx.ChargeurDeVue;
-import commun_javafx.vues.composants.CanvasAjustable;
-import commun_javafx.vues.composants.ImageAjustable;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import josser_combat_client.vues.VueMenu;
+import josser_combat.modeles.monde2d.Dessin2D;
 import josser_combat_client.vues.VuePartieLocale;
+import josser_combat_javafx.vues.composantes.MonDessin2D;
 
 
 public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
-	@FXML
-	ImageView imageJoueurUn;
-	@FXML
-	ImageView imageJoueurDeux;
-	@FXML
-	ImageView vieJoueurUn;
-	@FXML
-	ImageView vieJoueurDeux;
-	@FXML
-	StackPane conteneurPrincipal;
-	@FXML
-	Canvas canvasPartie;
 	
-	ImageView punchJoseph;
-	
-	ImageView punchYasser;
-	
-	GraphicsContext gc;
-	
-	/*Tout mon code en commentaire est en rapport au Canevas,
-	 *  je suis extrêmement confus sur quoi faire au sujet de comment bien implémenter ma composante et pourquoi mon contenu ne s'affiche pas*/
+	@FXML 
+	MonDessin2D canvasPartie;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		J.appel(this);
-		placerImagesJoueurs();
-		initialiserCoups();
-		chargerBarreDeVie(150,50);
 		
-		installerCapteursEvenementsUsager();
-	//	canvasPartie = new Canvas();
-		// gc = canvasPartie.getGraphicsContext2D();
-		// Image img = genererImageJoueur("Joseph");
-		// gc.drawImage(img, img.getWidth(), img.getHeight());
-		 conteneurPrincipal.getChildren().addAll(imageJoueurUn,imageJoueurDeux,vieJoueurUn,vieJoueurDeux);
+		DoitEtre.nonNul(canvasPartie);
 	}
 
+	/*
 
 	private void initialiserCoups() {
 		J.appel(this);
@@ -84,12 +46,8 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 		StackPane.setAlignment(imageJoueurDeux, Pos.BOTTOM_RIGHT);
 	}
 	
-/*Méthode qui génère (possiblement) mon image afin de la dessiner avec mon Canevas*/
-//	private Image genererImageJoueur(String personnage) {
-//		String url = "/img/"+personnage+"/"+personnage+".png";
-//		InputStream streamImage = ImageAjustable.class.getResourceAsStream(url);
-//		return new Image(streamImage);
-//	};
+	
+	*/
 	
 	@Override
 	public void obtenirCommandesPourEnvoi() {
@@ -100,6 +58,8 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 	@Override
 	public void installerCapteursEvenementsUsager() {
 		J.appel(this);
+		
+		/*
 		conteneurPrincipal.setOnMousePressed(e->{
 			imageJoueurUn.setOpacity(0);
 			punchJoseph.setOpacity(100);
@@ -109,15 +69,24 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 			imageJoueurUn.setOpacity(100);
 			punchJoseph.setOpacity(0);
 		});	
+		
+		*/
 	}
 
 	@Override
 	public void verifierCommandesPossibles() {
 		J.appel(this);
-		//Insérer si une telle commande est possible (EX: peux plus se déplacer dans un mur)
 		
 	}
+
+	@Override
+	public Dessin2D getDessin2D() {
+		J.appel(this);
+
+		return canvasPartie;
+	}
 	
+	/*
 	private ImageView chargerPersonnage(String personnage) {
 		J.appel(this);
 		
@@ -151,5 +120,7 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 		StackPane.setAlignment(vieJoueurDeux,Pos.TOP_RIGHT);
 		StackPane.setAlignment(vieJoueurUn,Pos.TOP_LEFT);
 	}
+	
+	*/
 
 }

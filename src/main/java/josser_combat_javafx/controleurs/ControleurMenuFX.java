@@ -5,6 +5,7 @@ import commun_javafx.ChargeurDeVue;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import josser_combat.modeles.partie.PartieLocale;
 import josser_combat_client.controleurs.ControleurMenu;
 import josser_combat_client.controleurs.ControleurParametres;
 import josser_combat_javafx.afficheurs.AfficheurMenuFX;
@@ -13,9 +14,9 @@ import josser_combat_javafx.vues.VueMenuFX;
 import josser_combat_javafx.vues.VueParametresFX;
 
 public class ControleurMenuFX extends ControleurMenu<VueMenuFX,AfficheurMenuFX>{
-
-	@FXML
-	private Button boutonParametres;
+	
+	
+	private PartieLocale partieLocale = new PartieLocale();
 	
 	@Override
 	public void installerReceptionCommandes() {
@@ -26,7 +27,6 @@ public class ControleurMenuFX extends ControleurMenu<VueMenuFX,AfficheurMenuFX>{
 	@Override
 	public void demarrer() {
 		J.appel(this);
-
 		
 	}
 	

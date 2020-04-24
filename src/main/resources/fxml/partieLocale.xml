@@ -16,11 +16,17 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.canvas.GraphicsContext?>
-<?import josser_combat_javafx.vues.composantes.CanevasAjustable?>
+<?import josser_combat_javafx.vues.composantes.MonDessin2D?>
 
 <StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="josser_combat_javafx.vues.VuePartieLocaleFX" fx:id="conteneurPrincipal">
-<HBox HBox.hgrow="ALWAYS" styleClass="background">
-	<CanevasAjustable fx:id="canevasPartie"></CanevasAjustable>
+
+
+	<MonDessin2D styleClass="background" fx:id="canvasPartie"></MonDessin2D>
+
+
+	
+	<!--  
+	
 		<VBox HBox.hgrow="ALWAYS" fx:id="panneau">
 			<ImageView fx:id="vieJoueurUn"/>
 			<ImageView fx:id="vieJoueurDeux"/>
@@ -30,6 +36,8 @@
 			<ImageView fx:id="imageJoueurDeux"/>
 		</HBox>
 </HBox>
+
+-->
 
 
 
