@@ -6,6 +6,8 @@ import commun_client.mvc.controleurs.RecepteurCommandeMVC;
 import josser_combat.modeles.partie.PartieLocale;
 import josser_combat.modeles.partie.PartieLocaleLectureSeule;
 import josser_combat_client.afficheurs.AfficheurPartieLocale;
+import josser_combat_client.commandes.bouger.Bouger;
+import josser_combat_client.commandes.bouger.BougerRecue;
 import josser_combat_client.commandes.sauter.Sauter;
 import josser_combat_client.commandes.sauter.SauterRecue;
 import josser_combat_client.vues.VuePartieLocale;
@@ -25,6 +27,16 @@ extends ControleurModeleVue<PartieLocaleLectureSeule,PartieLocale,V,A>{
 				J.appel(this);
 				
 				modele.initierSaut(commande.getCadran());
+			}
+		});
+		
+		installerRecepteurCommande(Bouger.class, new RecepteurCommandeMVC<BougerRecue>() {
+
+			@Override
+			public void executerCommandeMVC(BougerRecue commande) {
+				J.appel(this);
+				
+				modele.initierMouvement(commande.getCadran(), commande.getDirection());
 			}
 		});
 

@@ -1,6 +1,7 @@
 package josser_combat.modeles.monde2d;
 
 import commun.debogage.J;
+import josser_combat.enumerations.Direction;
 
 public class Personnage2D extends Objet2D {
 	
@@ -17,6 +18,8 @@ public class Personnage2D extends Objet2D {
 	
 	private double accelerationGraviteTerrestreMetresSecondesCarres =  9.81;
 	private final double VITESSE_SAUT_METRES_PAR_SECONDE = 10;
+
+	private final double VITESSE_MOUVEMENT_METRES_PAR_SECONDE = 5;
 
 	public Personnage2D(double centreXMetres, 
 			double centreYMetres, 
@@ -78,6 +81,23 @@ public class Personnage2D extends Objet2D {
 		if(centreYMetres <= (hauteurMetres / 2)) {
 			vitesseYMetresSecondes = VITESSE_SAUT_METRES_PAR_SECONDE;
 		}
+	}
+
+	public void initierMouvement(Direction direction) {
+		J.appel(this);
+		
+		switch(direction) {
+		
+		case GAUCHE:
+			vitesseXMetresSecondes = - VITESSE_MOUVEMENT_METRES_PAR_SECONDE;
+			break;
+
+		case DROITE:
+			vitesseXMetresSecondes =  VITESSE_MOUVEMENT_METRES_PAR_SECONDE;
+			break;
+		
+		}
+		
 	}
 
 }

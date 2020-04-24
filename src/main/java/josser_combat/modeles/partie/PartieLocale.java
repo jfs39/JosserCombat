@@ -7,6 +7,7 @@ import java.util.Map;
 import commun.debogage.J;
 import commun.modeles.Modele;
 import josser_combat.enumerations.Cadran;
+import josser_combat.enumerations.Direction;
 import josser_combat.modeles.monde2d.Monde2D;
 import josser_combat.modeles.monde2d.Monde2DLectureSeule;
 import josser_combat.modeles.monde2d.Personnage2D;
@@ -56,6 +57,16 @@ public final class PartieLocale extends Modele<PartieLocaleLectureSeule> impleme
 		
 		Personnage2D personnage = lesPersonnages.get(cadran);
 		personnage.initierSaut();
+	}
+
+
+
+	public void initierMouvement(Cadran cadran, Direction direction) {
+		J.appel(this);
+
+		Personnage2D personnage = lesPersonnages.get(cadran);
+		personnage.initierMouvement(direction);
+		
 	}
 
 }
