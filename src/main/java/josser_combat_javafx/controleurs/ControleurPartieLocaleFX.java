@@ -20,12 +20,6 @@ import josser_combat_javafx.vues.VuePartieLocaleFX;
 public class ControleurPartieLocaleFX extends ControleurPartieLocale<VuePartieLocaleFX,AfficheurPartieLocaleFX>{
 
 	AnimationTimer chronometre;
-	
-	@Override
-	public void installerReceptionCommandes() {
-		J.appel(this);
-
-	}
 
 	@Override
 	public void demarrer() {

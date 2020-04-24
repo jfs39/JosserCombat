@@ -14,6 +14,9 @@ public class Personnage2D extends Objet2D {
 	
 	private final double TEMPS_UN_PUNCH = 0.3;
 	private Double tempsRestantAuPunch = null;
+	
+	private double accelerationGraviteTerrestreMetresSecondesCarres =  9.81;
+	private final double VITESSE_SAUT_METRES_PAR_SECONDE = 10;
 
 	public Personnage2D(double centreXMetres, 
 			double centreYMetres, 
@@ -37,9 +40,7 @@ public class Personnage2D extends Objet2D {
 		
 		this.vitesseXMetresSecondes = vitesseInitialeMetresSecondes * Math.cos(angleInitialRadians);
 		this.vitesseYMetresSecondes = vitesseInitialeMetresSecondes * Math.sin(angleInitialRadians);
-		
-		double accelerationGraviteTerrestreMetresSecondesCarres =  9.81;
-		
+
 		this.accelerationYMetresSecondesCarres = - accelerationGraviteTerrestreMetresSecondesCarres;
 	}
 
@@ -68,6 +69,15 @@ public class Personnage2D extends Objet2D {
 		double hauteurPixels = hauteurMetres * facteurMetresEnPixelsY;
 		
 		dessin2d.dessinerImage(centreXPixels, centreYPixels, largeurPixels, hauteurPixels, srcImageCourante);
+	}
+
+	public void initierSaut() {
+		J.appel(this);
+		
+		// on peut sauter uniquement lorsqu'au plancher!
+		if(centreYMetres <= (hauteurMetres / 2)) {
+			vitesseYMetresSecondes = VITESSE_SAUT_METRES_PAR_SECONDE;
+		}
 	}
 
 }

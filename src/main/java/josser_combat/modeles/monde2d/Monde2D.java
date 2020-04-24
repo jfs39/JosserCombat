@@ -14,7 +14,7 @@ public class Monde2D implements Monde2DLectureSeule {
 
 	protected Set<Objet2D> lesObjets = new HashSet<>();
 
-	public void ajouterPersonnage(Cadran cadran, 
+	public Personnage2D ajouterPersonnage(Cadran cadran, 
 			String srcRepos,
 			String srcPunch) {
 		J.appel(this);
@@ -40,6 +40,8 @@ public class Monde2D implements Monde2DLectureSeule {
 				srcPunch);
 
 		lesObjets.add(lePersonnage);
+		
+		return lePersonnage;
 	}
 
 	public void reagirAuTempsQuiPasse(double secondesEcoulees) {
