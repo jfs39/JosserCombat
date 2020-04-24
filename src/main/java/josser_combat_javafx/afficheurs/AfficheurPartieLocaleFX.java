@@ -17,20 +17,6 @@ public class AfficheurPartieLocaleFX extends AfficheurPartieLocale<VuePartieLoca
 
 
 
-
-	@Override
-	public void initialiserAffichage(PartieLocaleLectureSeule modeleLectureSeule, VuePartieLocaleFX vue) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void rafraichirAffichage(PartieLocaleLectureSeule modeleLectureSeule, VuePartieLocaleFX vue) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 	
 	
 

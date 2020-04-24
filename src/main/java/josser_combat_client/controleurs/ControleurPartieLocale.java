@@ -8,6 +8,8 @@ import josser_combat.modeles.partie.PartieLocaleLectureSeule;
 import josser_combat_client.afficheurs.AfficheurPartieLocale;
 import josser_combat_client.commandes.bouger.Bouger;
 import josser_combat_client.commandes.bouger.BougerRecue;
+import josser_combat_client.commandes.puncher.Puncher;
+import josser_combat_client.commandes.puncher.PuncherRecue;
 import josser_combat_client.commandes.sauter.Sauter;
 import josser_combat_client.commandes.sauter.SauterRecue;
 import josser_combat_client.commandes.stopper.Stopper;
@@ -47,7 +49,15 @@ extends ControleurModeleVue<PartieLocaleLectureSeule,PartieLocale,V,A>{
 				J.appel(this);
 				
 				modele.stopperMouvement(commande.getCadran());
+			}
+		});
+		
+		installerRecepteurCommande(Puncher.class, new RecepteurCommandeMVC<PuncherRecue>() {
+			@Override
+			public void executerCommandeMVC(PuncherRecue commande) {
+				J.appel(this);
 				
+				modele.initierPunch(commande.getCadran());
 			}
 		});
 

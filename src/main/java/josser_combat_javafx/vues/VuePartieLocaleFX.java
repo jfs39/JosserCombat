@@ -18,6 +18,8 @@ import josser_combat.enumerations.Direction;
 import josser_combat.modeles.monde2d.Dessin2D;
 import josser_combat_client.commandes.bouger.Bouger;
 import josser_combat_client.commandes.bouger.BougerPourEnvoi;
+import josser_combat_client.commandes.puncher.Puncher;
+import josser_combat_client.commandes.puncher.PuncherPourEnvoi;
 import josser_combat_client.commandes.sauter.Sauter;
 import josser_combat_client.commandes.sauter.SauterPourEnvoi;
 import josser_combat_client.commandes.stopper.Stopper;
@@ -34,6 +36,7 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 	private SauterPourEnvoi sauterPourEnvoi;
 	private BougerPourEnvoi bougerPourEnvoi;
 	private StopperPourEnvoi stopperPourEnvoi;
+	private PuncherPourEnvoi puncherPourEnvoi;
 	
 	Set<KeyCode> touchesEnfoncees = new HashSet<>();
 
@@ -54,6 +57,7 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 		sauterPourEnvoi = FabriqueCommande.obtenirCommandePourEnvoi(Sauter.class);
 		bougerPourEnvoi = FabriqueCommande.obtenirCommandePourEnvoi(Bouger.class);
 		stopperPourEnvoi = FabriqueCommande.obtenirCommandePourEnvoi(Stopper.class);
+		puncherPourEnvoi = FabriqueCommande.obtenirCommandePourEnvoi(Puncher.class);
 	}
 
 	@Override
@@ -69,30 +73,31 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 				
 				touchesEnfoncees.add(event.getCode());
 				
-				// faire sauter le personnage à GAUCHE
+				// faire sauter le personnage de GAUCHE
 				if(event.getCode() == KeyCode.W) {
 					
 					sauterPourEnvoi.setCadran(Cadran.GAUCHE);
 					sauterPourEnvoi.envoyerCommande();
 
-				// bouger le personnage à GAUCHE vers la GAUCHE
+				// bouger le personnage de GAUCHE vers la GAUCHE
 				}else if(event.getCode() == KeyCode.A) {
 					
 					bougerPourEnvoi.setCadran(Cadran.GAUCHE);
 					bougerPourEnvoi.setDirection(Direction.GAUCHE);
 					bougerPourEnvoi.envoyerCommande();
 					
-				// bouger le personnage à GAUCHE vers la DROITE
+				// bouger le personnage de GAUCHE vers la DROITE
 				}else if(event.getCode() == KeyCode.D) {
 
 					bougerPourEnvoi.setCadran(Cadran.GAUCHE);
 					bougerPourEnvoi.setDirection(Direction.DROITE);
 					bougerPourEnvoi.envoyerCommande();
 					
-				// faire puncher le personnage à GAUCHE
+				// faire puncher le personnage de GAUCHE
 				}else if(event.getCode() == KeyCode.SPACE) {
 					
-					
+					puncherPourEnvoi.setCadran(Cadran.GAUCHE);
+					puncherPourEnvoi.envoyerCommande();
 				}
 			}
 		});
@@ -105,7 +110,12 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 				touchesEnfoncees.remove(event.getCode());
 
 				// arrêter de bouger le personnage à GAUCHE
-				if(event.getCode() == KeyCode.A || event.getCode() == KeyCode.D ) {
+				if(event.getCode() == KeyCode.A && !touchesEnfoncees.contains(KeyCode.D) ) {
+					
+					stopperPourEnvoi.setCadran(Cadran.GAUCHE);
+					stopperPourEnvoi.envoyerCommande();
+
+				} else if(event.getCode() == KeyCode.D && !touchesEnfoncees.contains(KeyCode.A) ) {
 					
 					stopperPourEnvoi.setCadran(Cadran.GAUCHE);
 					stopperPourEnvoi.envoyerCommande();

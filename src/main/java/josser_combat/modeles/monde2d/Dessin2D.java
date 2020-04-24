@@ -7,6 +7,8 @@ public interface Dessin2D {
 	
 	void viderDessin();
 	
+	void chargerImage(String src);
+
 	void dessinerImage(double centreXPixels, 
 			double centreYPixels, 
 			double largeurPixels, 

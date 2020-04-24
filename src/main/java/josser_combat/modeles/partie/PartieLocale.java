@@ -78,6 +78,15 @@ public final class PartieLocale extends Modele<PartieLocaleLectureSeule> impleme
 		
 	}
 
+
+
+	public void initierPunch(Cadran cadran) {
+		J.appel(this);
+
+		Personnage2D personnage = lesPersonnages.get(cadran);
+		personnage.puncher();
+	}
+
 }
 
 

@@ -14,7 +14,7 @@ public class Personnage2D extends Objet2D {
 	private String srcImageCourante;
 	
 	private final double TEMPS_UN_PUNCH = 0.3;
-	private Double tempsRestantAuPunch = null;
+	private double tempsRestantAuPunch = 0;
 	
 	private double accelerationGraviteTerrestreMetresSecondesCarres =  9.81;
 	private final double VITESSE_SAUT_METRES_PAR_SECONDE = 10;
@@ -49,6 +49,13 @@ public class Personnage2D extends Objet2D {
 
 		this.accelerationYMetresSecondesCarres = - accelerationGraviteTerrestreMetresSecondesCarres;
 	}
+
+	public void chargerImages(Dessin2D dessin2d) {
+		J.appel(this);
+		
+		dessin2d.chargerImage(srcImageRepos);
+		dessin2d.chargerImage(srcImagePunch);
+	}
 	
 	private boolean siPersonnageAuPlancher() {
 		return centreYMetres <= (hauteurMetres/2);
@@ -66,6 +73,15 @@ public class Personnage2D extends Objet2D {
 			if(!enMouvement) {
 				vitesseXMetresSecondes = 0;
 			}
+		}
+		
+		if(tempsRestantAuPunch > 0) {
+
+			tempsRestantAuPunch -= secondesEcoulees;
+
+		}else {
+
+			srcImageCourante = srcImageRepos;
 		}
 	}
 	@Override
@@ -97,33 +113,39 @@ public class Personnage2D extends Objet2D {
 	public void initierMouvement(Direction direction) {
 		J.appel(this);
 		
-		if(!enMouvement) {
-			enMouvement = true;
+		enMouvement = true;
 			
-			switch(direction) {
-			
-				case GAUCHE:
-					vitesseXMetresSecondes = - VITESSE_MOUVEMENT_METRES_PAR_SECONDE;
-					break;
+		switch(direction) {
+		
+			case GAUCHE:
+				vitesseXMetresSecondes = - VITESSE_MOUVEMENT_METRES_PAR_SECONDE;
+				break;
 
-				case DROITE:
-					vitesseXMetresSecondes =  VITESSE_MOUVEMENT_METRES_PAR_SECONDE;
-					break;
-				}
-		}
+			case DROITE:
+				vitesseXMetresSecondes =  VITESSE_MOUVEMENT_METRES_PAR_SECONDE;
+				break;
+			}
 	}
 
 	public void stopperMouvement() {
 		J.appel(this);
 		
-		if(enMouvement) {
-			enMouvement = false;
-			
-			if(!enSaut) {
-				vitesseXMetresSecondes = 0;
-			}
-		}
+		enMouvement = false;
 
+		if(!enSaut) {
+			vitesseXMetresSecondes = 0;
+		}
 	}
+
+	public void puncher() {
+		J.appel(this);
+		
+		srcImageCourante = srcImagePunch;
+		
+		if(tempsRestantAuPunch <= 0) {
+			tempsRestantAuPunch = TEMPS_UN_PUNCH;
+		}
+	}
+
 
 }

@@ -54,6 +54,17 @@ public class Monde2D implements Monde2DLectureSeule {
 	}
 
 	@Override
+	public void chargerImages(Dessin2D dessin2d) {
+		J.appel(this);
+
+		for(Objet2D objet2d : lesObjets) {
+			if(objet2d instanceof Personnage2D) {
+				((Personnage2D)objet2d).chargerImages(dessin2d);
+			}
+		}
+	}
+
+	@Override
 	public void afficher(Dessin2D dessin2d) {
 		J.appel(this);
 		

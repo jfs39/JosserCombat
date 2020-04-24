@@ -1,4 +1,7 @@
 package josser_combat_javafx.vues.composantes;
+import java.util.HashMap;
+import java.util.Map;
+
 import commun.debogage.J;
 import commun_javafx.vues.composants.CanvasAjustable;
 import javafx.scene.image.Image;
@@ -6,6 +9,8 @@ import josser_combat.modeles.monde2d.Dessin2D;
 
 
 public class MonDessin2D extends CanvasAjustable implements Dessin2D {
+	
+	private Map<String, Image> images = new HashMap<>();
 	
 	@Override
 	protected void reagirLargeurInitiale(double largeurInitiale) {
@@ -53,6 +58,13 @@ public class MonDessin2D extends CanvasAjustable implements Dessin2D {
 	}
 
 	@Override
+	public void chargerImage(String src) {
+		J.appel(this);
+		
+		images.put(src, new Image(src));
+	}
+
+	@Override
 	public void dessinerImage(double centreXPixels, double centreYPixels, double largeurPixels, double hauteurPixels,
 			String src) {
 
@@ -61,7 +73,8 @@ public class MonDessin2D extends CanvasAjustable implements Dessin2D {
 		double hautGaucheX = centreXPixels - largeurPixels / 2;
 		double hautGaucheY = centreYPixels - hauteurPixels / 2;
 
-		pinceau.drawImage(new Image(src), hautGaucheX, hautGaucheY, largeurPixels, hauteurPixels);
+		pinceau.drawImage(images.get(src), hautGaucheX, hautGaucheY, largeurPixels, hauteurPixels);
 	}
+
 
 }
