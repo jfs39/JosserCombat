@@ -85,16 +85,15 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 	}
 	
 /*Méthode qui génère (possiblement) mon image afin de la dessiner avec mon Canevas*/
-	private Image genererImageJoueur(String personnage) {
-		String url = "/img/"+personnage+"/"+personnage+".png";
-		InputStream streamImage = ImageAjustable.class.getResourceAsStream(url);
-		return new Image(streamImage);
-	};
+//	private Image genererImageJoueur(String personnage) {
+//		String url = "/img/"+personnage+"/"+personnage+".png";
+//		InputStream streamImage = ImageAjustable.class.getResourceAsStream(url);
+//		return new Image(streamImage);
+//	};
 	
 	@Override
 	public void obtenirCommandesPourEnvoi() {
 		J.appel(this);
-		// TODO Auto-generated method stub
 		
 	}
 
