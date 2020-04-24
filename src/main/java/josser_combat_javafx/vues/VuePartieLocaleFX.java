@@ -45,8 +45,9 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 		initialiserCoups();
 		chargerBarreDeVie(150,50);
 		conteneurPrincipal.getChildren().addAll(imageJoueurUn,imageJoueurDeux,vieJoueurUn,vieJoueurDeux);
+		conteneurPrincipal.addEventHandler(KeyEvent.ANY, keyListener);
 
-//		imageJoueurUn.setOnKeyReleased(new EventHandler<KeyEvent>(){
+//		conteneurPrincipal.setOnKeyPressed(new EventHandler<KeyEvent>(){
 //			  @Override
 //			  public void handle(KeyEvent event){
 //				  J.appel(this);
@@ -55,7 +56,7 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 //			    
 //			        imageJoueurUn.setLayoutX(imageJoueurUn.getLayoutX() + 5);
 //			    } else if (event.getCode() == KeyCode.A) {
-//			        imageJoueurUn.setLayoutX(imageJoueurUn.getLayoutX() - 5);
+//			    	imageJoueurUn.setLayoutX(imageJoueurUn.getLayoutX() - 5);
 //			    }
 //			  }
 //			});
@@ -77,6 +78,18 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 		});
 		
 	}
+	private EventHandler<KeyEvent> keyListener = new EventHandler<KeyEvent>() {
+	    @Override
+	    public void handle(KeyEvent event) {
+	        if(event.getCode() == KeyCode.D || event.getCode() == KeyCode.A) {
+	        	imageJoueurUn.setLayoutX(imageJoueurUn.getLayoutX() + 5);
+	        } 
+	        else if(event.getCode() == KeyCode.SPACE) {
+	            
+	        }
+	        event.consume();
+	    }
+	};
 
 	private void initialiserCoups() {
 		String url = "/img/Joseph/JosephPunch.png";
