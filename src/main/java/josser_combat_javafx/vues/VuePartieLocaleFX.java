@@ -35,32 +35,57 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 	@FXML
 	StackPane conteneurPrincipal;
 	
+	ImageView punchJoseph;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		J.appel(this);
 		
 		mettreJoueurs();
+		initialiserCoups();
 		chargerBarreDeVie(150,50);
 		conteneurPrincipal.getChildren().addAll(imageJoueurUn,imageJoueurDeux,vieJoueurUn,vieJoueurDeux);
 
-		imageJoueurUn.setOnKeyReleased(new EventHandler<KeyEvent>(){
-			  @Override
-			  public void handle(KeyEvent event){
-				  J.appel(this);
-					System.out.println(event.getCode());
-			    if (event.getCode() == KeyCode.D) {
-			    
-			        imageJoueurUn.setLayoutX(imageJoueurUn.getLayoutX() + 5);
-			    } else if (event.getCode() == KeyCode.A) {
-			        imageJoueurUn.setLayoutX(imageJoueurUn.getLayoutX() - 5);
-			    }
-			  }
-			});
+//		imageJoueurUn.setOnKeyReleased(new EventHandler<KeyEvent>(){
+//			  @Override
+//			  public void handle(KeyEvent event){
+//				  J.appel(this);
+//					System.out.println(event.getCode());
+//			    if (event.getCode() == KeyCode.D) {
+//			    
+//			        imageJoueurUn.setLayoutX(imageJoueurUn.getLayoutX() + 5);
+//			    } else if (event.getCode() == KeyCode.A) {
+//			        imageJoueurUn.setLayoutX(imageJoueurUn.getLayoutX() - 5);
+//			    }
+//			  }
+//			});
 		
 //		EventHandler<KeyEvent> handler1 = key -> {
 //			imageJoueurUn.setLayoutX(imageJoueurUn.getLayoutX() + 5);
 //		};
 //		conteneurPrincipal.getScene().addEventHandler(KeyEvent.KEY_PRESSED, handler1);
+		
+		
+		conteneurPrincipal.setOnMousePressed(e->{
+			imageJoueurUn.setOpacity(0);
+			punchJoseph.setOpacity(100);
+		});
+		
+		conteneurPrincipal.setOnMouseReleased(e->{
+			imageJoueurUn.setOpacity(100);
+			punchJoseph.setOpacity(0);
+		});
+		
+	}
+
+	private void initialiserCoups() {
+		String url = "/img/Joseph/JosephPunch.png";
+		InputStream streamImage = ImageAjustable.class.getResourceAsStream(url);
+		Image image = new Image(streamImage);
+		punchJoseph = new ImageView(image);
+		punchJoseph.setOpacity(0);
+		conteneurPrincipal.getChildren().add(punchJoseph);
+		StackPane.setAlignment(punchJoseph, Pos.BOTTOM_LEFT);
 		
 	}
 
