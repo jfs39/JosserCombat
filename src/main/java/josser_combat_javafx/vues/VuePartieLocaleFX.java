@@ -98,6 +98,31 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 					
 					puncherPourEnvoi.setCadran(Cadran.GAUCHE);
 					puncherPourEnvoi.envoyerCommande();
+					
+				//faire sauter Yasser	
+				}else if(event.getCode() == KeyCode.UP) {
+				
+					sauterPourEnvoi.setCadran(Cadran.GAUCHE);
+					sauterPourEnvoi.envoyerCommande();
+					
+				//faire marcher Yasser vers la droite
+				}else if(event.getCode() == KeyCode.RIGHT) {
+					
+					bougerPourEnvoi.setCadran(Cadran.GAUCHE);
+					bougerPourEnvoi.setDirection(Direction.DROITE);
+					bougerPourEnvoi.envoyerCommande();
+					
+				//faire marcher Yasser vers la gauche
+				}else if(event.getCode() == KeyCode.LEFT) {
+					
+					bougerPourEnvoi.setCadran(Cadran.GAUCHE);
+					bougerPourEnvoi.setDirection(Direction.GAUCHE);
+					bougerPourEnvoi.envoyerCommande();
+				//faire puncher Yasser
+				}else if(event.getCode() == KeyCode.NUMPAD0) {
+					
+					puncherPourEnvoi.setCadran(Cadran.GAUCHE);
+					puncherPourEnvoi.envoyerCommande();
 				}
 			}
 		});
@@ -110,12 +135,12 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 				touchesEnfoncees.remove(event.getCode());
 
 				// arrêter de bouger le personnage à GAUCHE
-				if(event.getCode() == KeyCode.A && !touchesEnfoncees.contains(KeyCode.D) ) {
+				if(event.getCode() == KeyCode.A && !touchesEnfoncees.contains(KeyCode.D) || event.getCode() == KeyCode.LEFT && !touchesEnfoncees.contains(KeyCode.RIGHT)) {
 					
 					stopperPourEnvoi.setCadran(Cadran.GAUCHE);
 					stopperPourEnvoi.envoyerCommande();
 
-				} else if(event.getCode() == KeyCode.D && !touchesEnfoncees.contains(KeyCode.A) ) {
+				} else if(event.getCode() == KeyCode.D && !touchesEnfoncees.contains(KeyCode.A) || event.getCode() == KeyCode.RIGHT && !touchesEnfoncees.contains(KeyCode.LEFT) ) {
 					
 					stopperPourEnvoi.setCadran(Cadran.GAUCHE);
 					stopperPourEnvoi.envoyerCommande();
