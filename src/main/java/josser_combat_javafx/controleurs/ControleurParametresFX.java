@@ -28,12 +28,12 @@ public class ControleurParametresFX extends ControleurParametres<VueParametresFX
 	
 	public static void playAudio() {
 		J.appel(ControleurParametresFX.class);
-		/*
+		
 		media = new Media(new File(MEDIA_URL).toURI().toString());
 		mediaPlayer = new MediaPlayer(media);
 		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 		mediaPlayer.play();
-		*/
+		
 	}
 	
 	public static void changerVolume(double niveau) {
