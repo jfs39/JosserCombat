@@ -15,7 +15,7 @@ public class Personnage2D extends Objet2D {
 	private String srcImageCourante;
 	
 	private final double TEMPS_UN_PUNCH = 0.25;
-	private final double TEMPS_UN_BLOQUE = 0.75;
+	private final double TEMPS_UN_BLOQUE = 0.55;
 	private double tempsRestantAuPunch = 0;
 	private double tempsRestantAuBloque = 0;
 	
@@ -26,7 +26,6 @@ public class Personnage2D extends Objet2D {
 	
 	private boolean enMouvement = false;
 	private boolean enSaut = false;
-	private boolean enBloque = false;
 
 	public Personnage2D(double centreXMetres, 
 			double centreYMetres, 
@@ -161,7 +160,6 @@ public class Personnage2D extends Objet2D {
 
 	public void bloquer() {
 		J.appel(this);
-		enBloque = true;
 		srcImageCourante = srcImageBloquer;
 		
 		if(tempsRestantAuBloque <= 0) {
