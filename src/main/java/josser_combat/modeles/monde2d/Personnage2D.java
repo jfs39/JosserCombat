@@ -1,6 +1,7 @@
 package josser_combat.modeles.monde2d;
 
 import commun.debogage.J;
+import josser_combat.enumerations.Cadran;
 import josser_combat.enumerations.Direction;
 
 public class Personnage2D extends Objet2D {
@@ -11,8 +12,13 @@ public class Personnage2D extends Objet2D {
 	private String srcImageRepos;
 	private String srcImagePunch;
 	private String srcImageBloquer;
+	private String srcImageReposMirror;
+	private String srcImagePunchMirror;
+	private String srcImageBloquerMirror;
 	
 	private String srcImageCourante;
+	
+	private Direction directionCourante;
 	
 	private final double TEMPS_UN_PUNCH = 0.25;
 	private final double TEMPS_UN_BLOQUE = 0.55;
@@ -26,7 +32,9 @@ public class Personnage2D extends Objet2D {
 	
 	private boolean enMouvement = false;
 	private boolean enSaut = false;
-
+	
+	
+	
 	public Personnage2D(double centreXMetres, 
 			double centreYMetres, 
 			double largeurMetres,
@@ -35,15 +43,21 @@ public class Personnage2D extends Objet2D {
 			double angleInitialDegre,
 			String srcImageRepos,
 			String srcImagePunch, 
-			String srcImageBloque) {
+			String srcImageBloque,
+			String srcImageReposMirror,
+			String srcImagePunchMirror,
+			String srcImageBloquerMirror) {
 
 		super(centreXMetres, centreYMetres);
 		
 		this.largeurMetres = largeurMetres;
 		this.hauteurMetres = hauteurMetres;
 		this.srcImageRepos = srcImageRepos;
+		this.srcImageReposMirror = srcImageReposMirror;
 		this.srcImagePunch = srcImagePunch;
 		this.srcImageBloquer = srcImageBloque;
+		this.srcImagePunchMirror = srcImagePunchMirror;
+		this.srcImageBloquerMirror = srcImageBloquerMirror;
 		
 		this.srcImageCourante = this.srcImageRepos;
 		
@@ -61,6 +75,9 @@ public class Personnage2D extends Objet2D {
 		dessin2d.chargerImage(srcImageRepos);
 		dessin2d.chargerImage(srcImagePunch);
 		dessin2d.chargerImage(srcImageBloquer);
+		dessin2d.chargerImage(srcImageReposMirror);
+		dessin2d.chargerImage(srcImagePunchMirror);
+		dessin2d.chargerImage(srcImageBloquerMirror);
 	}
 	
 	private boolean siPersonnageAuPlancher() {
@@ -82,16 +99,69 @@ public class Personnage2D extends Objet2D {
 		}
 		
 		if(tempsRestantAuPunch > 0) {
+			if(srcImageCourante.contains("Joseph") && directionCourante == Direction.GAUCHE ) {
+				
+				srcImageCourante = srcImagePunchMirror;
+				
+			} else if(srcImageCourante.contains("Yasser") && directionCourante == Direction.DROITE) {
+				
+				srcImageCourante = srcImagePunchMirror;
+				
+			} else if(srcImageCourante.contains("Joseph") && directionCourante == Direction.DROITE) {
+				
+				srcImageCourante = srcImagePunch;
+				
+			} else if(srcImageCourante.contains("Yasser") && directionCourante == Direction.GAUCHE) {
+				
+				srcImageCourante = srcImagePunch;
+				
+			}
 
 			tempsRestantAuPunch -= secondesEcoulees;
 
 		}else if(tempsRestantAuBloque > 0){
 			
+			if(srcImageCourante.contains("Joseph") && directionCourante == Direction.GAUCHE ) {
+				
+				srcImageCourante = srcImageBloquerMirror;
+				
+			} else if(srcImageCourante.contains("Yasser") && directionCourante == Direction.DROITE) {
+				
+				srcImageCourante = srcImageBloquerMirror;
+				
+			} else if(srcImageCourante.contains("Joseph") && directionCourante == Direction.DROITE) {
+				
+				srcImageCourante = srcImageBloquer;
+				
+			} else if(srcImageCourante.contains("Yasser") && directionCourante == Direction.GAUCHE) {
+				
+				srcImageCourante = srcImageBloquer;
+				
+			}
+			
 			tempsRestantAuBloque -= secondesEcoulees;
 			
-		}else{
-
-			srcImageCourante = srcImageRepos;
+		}else if(directionCourante == Direction.GAUCHE){
+			
+			if(srcImageCourante.contains("Joseph")) {
+				
+				srcImageCourante = srcImageReposMirror;
+			} else if(srcImageCourante.contains("Yasser")) {
+				
+				srcImageCourante = srcImageRepos;
+			}
+			
+		} else {
+			if(srcImageCourante.contains("Joseph")) {
+				
+				srcImageCourante = srcImageRepos;
+			} else if(srcImageCourante.contains("Yasser")) {
+				
+				srcImageCourante = srcImageReposMirror;
+			} else {
+				srcImageCourante = srcImageRepos;
+			}
+			
 		}
 		
 	}
@@ -123,17 +193,19 @@ public class Personnage2D extends Objet2D {
 
 	public void initierMouvement(Direction direction) {
 		J.appel(this);
-		
+		directionCourante = direction;
 		enMouvement = true;
 			
 		switch(direction) {
 		
 			case GAUCHE:
 				vitesseXMetresSecondes = - VITESSE_MOUVEMENT_METRES_PAR_SECONDE;
+				
 				break;
 
 			case DROITE:
 				vitesseXMetresSecondes =  VITESSE_MOUVEMENT_METRES_PAR_SECONDE;
+				
 				break;
 			}
 	}
@@ -167,9 +239,5 @@ public class Personnage2D extends Objet2D {
 		}
 		
 	}
-
-		
 	
-
-
 }

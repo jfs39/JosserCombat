@@ -27,12 +27,18 @@ public final class PartieLocale extends Modele<PartieLocaleLectureSeule> impleme
 		Personnage2D joseph = monde2D.ajouterPersonnage(Cadran.GAUCHE, 
 				"img/Joseph/Joseph.png", 
 				"img/Joseph/JosephPunch.png",
-				"img/Joseph/JosephEnergy.png");
+				"img/Joseph/JosephEnergy.png",
+				"img/Joseph/JosephMirror.png",
+				"img/Joseph/JosephPunchMirror.png",
+				"img/Joseph/JosephEnergyMirror.png");
 
 		Personnage2D yasser = monde2D.ajouterPersonnage(Cadran.DROIT, 
 				"img/Yasser/Yasser.png", 
 				"img/Yasser/YasserPunch.png",
-				"img/Yasser/YasserEnergy.png");
+				"img/Yasser/YasserEnergy.png",
+				"img/Yasser/YasserMirror.png",
+				"img/Yasser/YasserPunchMirror.png",
+				"img/Yasser/YasserEnergyMirror.png");
 
 		lesPersonnages.put(Cadran.GAUCHE, joseph);
 		lesPersonnages.put(Cadran.DROIT, yasser);

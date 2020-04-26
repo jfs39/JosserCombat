@@ -9,7 +9,7 @@ import josser_combat.enumerations.Cadran;
 
 public class Monde2D implements Monde2DLectureSeule {
 	
-	protected double largeurMetres = 15;
+	protected double largeurMetres = 12;
 	protected double hauteurMetres = 10;
 
 	protected Set<Objet2D> lesObjets = new HashSet<>();
@@ -17,7 +17,10 @@ public class Monde2D implements Monde2DLectureSeule {
 	public Personnage2D ajouterPersonnage(Cadran cadran, 
 			String srcRepos,
 			String srcPunch, 
-			String srcBloque) {
+			String srcBloque,
+			String srcMirror,
+			String srcPunchMirror,
+			String srcBloqueMirror) {
 		J.appel(this);
 		
 		double centreX = 2;
@@ -39,7 +42,10 @@ public class Monde2D implements Monde2DLectureSeule {
 				0,
 				srcRepos,
 				srcPunch,
-				srcBloque);
+				srcBloque,
+				srcMirror,
+				srcPunchMirror,
+				srcBloqueMirror);
 
 		lesObjets.add(lePersonnage);
 		
