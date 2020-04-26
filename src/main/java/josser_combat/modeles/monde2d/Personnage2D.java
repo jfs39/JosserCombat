@@ -10,11 +10,14 @@ public class Personnage2D extends Objet2D {
 	
 	private String srcImageRepos;
 	private String srcImagePunch;
+	private String srcImageBloquer;
 	
 	private String srcImageCourante;
 	
-	private final double TEMPS_UN_PUNCH = 0.3;
+	private final double TEMPS_UN_PUNCH = 0.25;
+	private final double TEMPS_UN_BLOQUE = 0.75;
 	private double tempsRestantAuPunch = 0;
+	private double tempsRestantAuBloque = 0;
 	
 	private double accelerationGraviteTerrestreMetresSecondesCarres =  9.81;
 	private final double VITESSE_SAUT_METRES_PAR_SECONDE = 10;
@@ -23,6 +26,7 @@ public class Personnage2D extends Objet2D {
 	
 	private boolean enMouvement = false;
 	private boolean enSaut = false;
+	private boolean enBloque = false;
 
 	public Personnage2D(double centreXMetres, 
 			double centreYMetres, 
@@ -31,7 +35,8 @@ public class Personnage2D extends Objet2D {
 			double vitesseInitialeMetresSecondes, 
 			double angleInitialDegre,
 			String srcImageRepos,
-			String srcImagePunch) {
+			String srcImagePunch, 
+			String srcImageBloque) {
 
 		super(centreXMetres, centreYMetres);
 		
@@ -39,6 +44,7 @@ public class Personnage2D extends Objet2D {
 		this.hauteurMetres = hauteurMetres;
 		this.srcImageRepos = srcImageRepos;
 		this.srcImagePunch = srcImagePunch;
+		this.srcImageBloquer = srcImageBloque;
 		
 		this.srcImageCourante = this.srcImageRepos;
 		
@@ -55,6 +61,7 @@ public class Personnage2D extends Objet2D {
 		
 		dessin2d.chargerImage(srcImageRepos);
 		dessin2d.chargerImage(srcImagePunch);
+		dessin2d.chargerImage(srcImageBloquer);
 	}
 	
 	private boolean siPersonnageAuPlancher() {
@@ -79,10 +86,15 @@ public class Personnage2D extends Objet2D {
 
 			tempsRestantAuPunch -= secondesEcoulees;
 
-		}else {
+		}else if(tempsRestantAuBloque > 0){
+			
+			tempsRestantAuBloque -= secondesEcoulees;
+			
+		}else{
 
 			srcImageCourante = srcImageRepos;
 		}
+		
 	}
 	@Override
 	public void afficher(double facteurMetresEnPixelsX, 
@@ -146,6 +158,20 @@ public class Personnage2D extends Objet2D {
 			tempsRestantAuPunch = TEMPS_UN_PUNCH;
 		}
 	}
+
+	public void bloquer() {
+		J.appel(this);
+		enBloque = true;
+		srcImageCourante = srcImageBloquer;
+		
+		if(tempsRestantAuBloque <= 0) {
+			tempsRestantAuBloque = TEMPS_UN_BLOQUE;
+		}
+		
+	}
+
+		
+	
 
 
 }

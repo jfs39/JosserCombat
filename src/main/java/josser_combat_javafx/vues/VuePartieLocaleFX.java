@@ -16,6 +16,8 @@ import javafx.scene.input.KeyEvent;
 import josser_combat.enumerations.Cadran;
 import josser_combat.enumerations.Direction;
 import josser_combat.modeles.monde2d.Dessin2D;
+import josser_combat_client.commandes.bloquer.Bloquer;
+import josser_combat_client.commandes.bloquer.BloquerPourEnvoi;
 import josser_combat_client.commandes.bouger.Bouger;
 import josser_combat_client.commandes.bouger.BougerPourEnvoi;
 import josser_combat_client.commandes.puncher.Puncher;
@@ -37,6 +39,8 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 	private BougerPourEnvoi bougerPourEnvoi;
 	private StopperPourEnvoi stopperPourEnvoi;
 	private PuncherPourEnvoi puncherPourEnvoi;
+	private BloquerPourEnvoi bloquerPourEnvoi;
+
 	
 	Set<KeyCode> touchesEnfoncees = new HashSet<>();
 
@@ -58,6 +62,8 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 		bougerPourEnvoi = FabriqueCommande.obtenirCommandePourEnvoi(Bouger.class);
 		stopperPourEnvoi = FabriqueCommande.obtenirCommandePourEnvoi(Stopper.class);
 		puncherPourEnvoi = FabriqueCommande.obtenirCommandePourEnvoi(Puncher.class);
+		bloquerPourEnvoi = FabriqueCommande.obtenirCommandePourEnvoi(Bloquer.class);
+
 	}
 
 	@Override
@@ -100,29 +106,39 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 					puncherPourEnvoi.envoyerCommande();
 					
 				//faire sauter Yasser	
-				}else if(event.getCode() == KeyCode.UP) {
+				} else if(event.getCode() == KeyCode.UP) {
 				
 					sauterPourEnvoi.setCadran(Cadran.DROIT);
 					sauterPourEnvoi.envoyerCommande();
 					
 				//faire marcher Yasser vers la droite
-				}else if(event.getCode() == KeyCode.RIGHT) {
+				} else if(event.getCode() == KeyCode.RIGHT) {
 					
 					bougerPourEnvoi.setCadran(Cadran.DROIT);
 					bougerPourEnvoi.setDirection(Direction.DROITE);
 					bougerPourEnvoi.envoyerCommande();
 					
 				//faire marcher Yasser vers la gauche
-				}else if(event.getCode() == KeyCode.LEFT) {
+				} else if(event.getCode() == KeyCode.LEFT) {
 					
 					bougerPourEnvoi.setCadran(Cadran.DROIT);
 					bougerPourEnvoi.setDirection(Direction.GAUCHE);
 					bougerPourEnvoi.envoyerCommande();
 				//faire puncher Yasser
-				}else if(event.getCode() == KeyCode.NUMPAD0) {
+				} else if(event.getCode() == KeyCode.NUMPAD0) {
 					
 					puncherPourEnvoi.setCadran(Cadran.DROIT);
 					puncherPourEnvoi.envoyerCommande();
+				//faire bloquer Yasser	
+				} else if(event.getCode() == KeyCode.NUMPAD1) {
+					
+					bloquerPourEnvoi.setCadran(Cadran.DROIT);
+					bloquerPourEnvoi.envoyerCommande();
+				//Faire bloquer Joseph	
+				} else if(event.getCode() == KeyCode.SHIFT) {
+					
+					bloquerPourEnvoi.setCadran(Cadran.GAUCHE);
+					bloquerPourEnvoi.envoyerCommande();
 				}
 			}
 		});
@@ -154,6 +170,7 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 					
 					stopperPourEnvoi.setCadran(Cadran.DROIT);
 					stopperPourEnvoi.envoyerCommande();
+					
 				}
 			}
 		});

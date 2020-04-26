@@ -26,11 +26,13 @@ public final class PartieLocale extends Modele<PartieLocaleLectureSeule> impleme
 		
 		Personnage2D joseph = monde2D.ajouterPersonnage(Cadran.GAUCHE, 
 				"img/Joseph/Joseph.png", 
-				"img/Joseph/JosephPunch.png");
+				"img/Joseph/JosephPunch.png",
+				"img/Joseph/JosephEnergy.png");
 
 		Personnage2D yasser = monde2D.ajouterPersonnage(Cadran.DROIT, 
 				"img/Yasser/Yasser.png", 
-				"img/Yasser/YasserPunch.png");
+				"img/Yasser/YasserPunch.png",
+				"img/Yasser/YasserEnergy.png");
 
 		lesPersonnages.put(Cadran.GAUCHE, joseph);
 		lesPersonnages.put(Cadran.DROIT, yasser);
@@ -85,6 +87,14 @@ public final class PartieLocale extends Modele<PartieLocaleLectureSeule> impleme
 
 		Personnage2D personnage = lesPersonnages.get(cadran);
 		personnage.puncher();
+	}
+	
+	
+	public void initierBloquer(Cadran cadran) {
+		J.appel(this);
+
+		Personnage2D personnage = lesPersonnages.get(cadran);
+		personnage.bloquer();
 	}
 
 }

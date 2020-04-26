@@ -6,6 +6,8 @@ import commun_client.mvc.controleurs.RecepteurCommandeMVC;
 import josser_combat.modeles.partie.PartieLocale;
 import josser_combat.modeles.partie.PartieLocaleLectureSeule;
 import josser_combat_client.afficheurs.AfficheurPartieLocale;
+import josser_combat_client.commandes.bloquer.Bloquer;
+import josser_combat_client.commandes.bloquer.BloquerRecue;
 import josser_combat_client.commandes.bouger.Bouger;
 import josser_combat_client.commandes.bouger.BougerRecue;
 import josser_combat_client.commandes.puncher.Puncher;
@@ -60,6 +62,16 @@ extends ControleurModeleVue<PartieLocaleLectureSeule,PartieLocale,V,A>{
 				modele.initierPunch(commande.getCadran());
 			}
 		});
+		
+		installerRecepteurCommande(Bloquer.class, new RecepteurCommandeMVC<BloquerRecue>() {
+			@Override
+			public void executerCommandeMVC(BloquerRecue commande) {
+				J.appel(this);
+				
+				modele.initierBloquer(commande.getCadran());
+			}
+		});
+
 
 	}
 	
