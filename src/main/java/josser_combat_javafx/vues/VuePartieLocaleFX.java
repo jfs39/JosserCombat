@@ -102,26 +102,26 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 				//faire sauter Yasser	
 				}else if(event.getCode() == KeyCode.UP) {
 				
-					sauterPourEnvoi.setCadran(Cadran.GAUCHE);
+					sauterPourEnvoi.setCadran(Cadran.DROIT);
 					sauterPourEnvoi.envoyerCommande();
 					
 				//faire marcher Yasser vers la droite
 				}else if(event.getCode() == KeyCode.RIGHT) {
 					
-					bougerPourEnvoi.setCadran(Cadran.GAUCHE);
+					bougerPourEnvoi.setCadran(Cadran.DROIT);
 					bougerPourEnvoi.setDirection(Direction.DROITE);
 					bougerPourEnvoi.envoyerCommande();
 					
 				//faire marcher Yasser vers la gauche
 				}else if(event.getCode() == KeyCode.LEFT) {
 					
-					bougerPourEnvoi.setCadran(Cadran.GAUCHE);
+					bougerPourEnvoi.setCadran(Cadran.DROIT);
 					bougerPourEnvoi.setDirection(Direction.GAUCHE);
 					bougerPourEnvoi.envoyerCommande();
 				//faire puncher Yasser
 				}else if(event.getCode() == KeyCode.NUMPAD0) {
 					
-					puncherPourEnvoi.setCadran(Cadran.GAUCHE);
+					puncherPourEnvoi.setCadran(Cadran.DROIT);
 					puncherPourEnvoi.envoyerCommande();
 				}
 			}
@@ -135,14 +135,24 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 				touchesEnfoncees.remove(event.getCode());
 
 				// arrêter de bouger le personnage à GAUCHE
-				if(event.getCode() == KeyCode.A && !touchesEnfoncees.contains(KeyCode.D) || event.getCode() == KeyCode.LEFT && !touchesEnfoncees.contains(KeyCode.RIGHT)) {
+				if(event.getCode() == KeyCode.A && !touchesEnfoncees.contains(KeyCode.D) ) {
 					
 					stopperPourEnvoi.setCadran(Cadran.GAUCHE);
 					stopperPourEnvoi.envoyerCommande();
 
-				} else if(event.getCode() == KeyCode.D && !touchesEnfoncees.contains(KeyCode.A) || event.getCode() == KeyCode.RIGHT && !touchesEnfoncees.contains(KeyCode.LEFT) ) {
+				} else if(event.getCode() == KeyCode.D && !touchesEnfoncees.contains(KeyCode.A)  ) {
 					
 					stopperPourEnvoi.setCadran(Cadran.GAUCHE);
+					stopperPourEnvoi.envoyerCommande();
+					
+				}else if(event.getCode() == KeyCode.RIGHT && !touchesEnfoncees.contains(KeyCode.LEFT) ) {
+					
+					stopperPourEnvoi.setCadran(Cadran.DROIT);
+					stopperPourEnvoi.envoyerCommande();
+					
+				}else if(event.getCode() == KeyCode.LEFT && !touchesEnfoncees.contains(KeyCode.RIGHT) ) {
+					
+					stopperPourEnvoi.setCadran(Cadran.DROIT);
 					stopperPourEnvoi.envoyerCommande();
 				}
 			}
