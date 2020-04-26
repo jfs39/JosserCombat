@@ -1,7 +1,6 @@
 package josser_combat.modeles.monde2d;
 
 import commun.debogage.J;
-import josser_combat.enumerations.Cadran;
 import josser_combat.enumerations.Direction;
 
 public class Personnage2D extends Objet2D {
@@ -88,104 +87,87 @@ public class Personnage2D extends Objet2D {
 	public void reagirAuTempsQuiPasse(double secondesEcoulees) {
 		super.reagirAuTempsQuiPasse(secondesEcoulees);
 		J.appel(this);
-		
-		if(siPersonnageAuPlancher()) {
-			centreYMetres = hauteurMetres/2;
+
+		if (siPersonnageAuPlancher()) {
+			centreYMetres = hauteurMetres / 2;
 			enSaut = false;
-			
-			if(!enMouvement) {
+
+			if (!enMouvement) {
 				vitesseXMetresSecondes = 0;
 			}
 		}
-		
-		if(tempsRestantAuPunch > 0) {
-			if(srcImageCourante.contains("Joseph") && directionCourante == Direction.GAUCHE ) {
-				
-				srcImageCourante = srcImagePunchMirror;
-				
-			} else if(srcImageCourante.contains("Yasser") && directionCourante == Direction.DROITE) {
-				
-				srcImageCourante = srcImagePunchMirror;
-				
-			} else if(srcImageCourante.contains("Joseph") && directionCourante == Direction.DROITE) {
-				
-				srcImageCourante = srcImagePunch;
-				
-			} else if(srcImageCourante.contains("Yasser") && directionCourante == Direction.GAUCHE) {
-				
-				srcImageCourante = srcImagePunch;
-				
-			}
+
+		if (tempsRestantAuPunch > 0) {
+			gererDirectionPersonnage(srcImagePunchMirror, srcImagePunch);
 
 			tempsRestantAuPunch -= secondesEcoulees;
 
-		}else if(tempsRestantAuBloque > 0){
-			
-			if(srcImageCourante.contains("Joseph") && directionCourante == Direction.GAUCHE ) {
-				
-				srcImageCourante = srcImageBloquerMirror;
-				
-			} else if(srcImageCourante.contains("Yasser") && directionCourante == Direction.DROITE) {
-				
-				srcImageCourante = srcImageBloquerMirror;
-				
-			} else if(srcImageCourante.contains("Joseph") && directionCourante == Direction.DROITE) {
-				
-				srcImageCourante = srcImageBloquer;
-				
-			} else if(srcImageCourante.contains("Yasser") && directionCourante == Direction.GAUCHE) {
-				
-				srcImageCourante = srcImageBloquer;
-				
-			}
-			
+		} else if (tempsRestantAuBloque > 0) {
+
+			gererDirectionPersonnage(srcImageBloquerMirror, srcImageBloquer);
+
 			tempsRestantAuBloque -= secondesEcoulees;
-			
-		}else if(directionCourante == Direction.GAUCHE){
-			
-			if(srcImageCourante.contains("Joseph")) {
-				
+
+		} else if (directionCourante == Direction.GAUCHE) {
+
+			if (srcImageCourante.contains("Joseph")) {
+
 				srcImageCourante = srcImageReposMirror;
-			} else if(srcImageCourante.contains("Yasser")) {
-				
+			} else if (srcImageCourante.contains("Yasser")) {
+
 				srcImageCourante = srcImageRepos;
 			}
-			
+
 		} else {
-			if(srcImageCourante.contains("Joseph")) {
-				
+			if (srcImageCourante.contains("Joseph")) {
+
 				srcImageCourante = srcImageRepos;
-			} else if(srcImageCourante.contains("Yasser")) {
-				
+			} else if (srcImageCourante.contains("Yasser")) {
+
 				srcImageCourante = srcImageReposMirror;
 			} else {
 				srcImageCourante = srcImageRepos;
 			}
-			
+
 		}
-		
+
 	}
+
+	private void gererDirectionPersonnage(String srcImageActionMirror, String srcImageActionDefaut) {
+		if (srcImageCourante.contains("Joseph") && directionCourante == Direction.GAUCHE) {
+
+			srcImageCourante = srcImageActionMirror;
+
+		} else if (srcImageCourante.contains("Yasser") && directionCourante == Direction.DROITE) {
+
+			srcImageCourante = srcImageActionMirror;
+
+		} else {
+
+			srcImageCourante = srcImageActionDefaut;
+
+		}
+	}
+	
 	@Override
-	public void afficher(double facteurMetresEnPixelsX, 
-			             double facteurMetresEnPixelsY, 
-			             double hauteurDessinPixels,
-			             Dessin2D dessin2d) {
+	public void afficher(double facteurMetresEnPixelsX, double facteurMetresEnPixelsY, double hauteurDessinPixels,
+			Dessin2D dessin2d) {
 		J.appel(this);
-		
+
 		double centreXPixels = centreXMetres * facteurMetresEnPixelsX;
 		double centreYPixels = hauteurDessinPixels - (centreYMetres * facteurMetresEnPixelsY);
-		
+
 		double largeurPixels = largeurMetres * facteurMetresEnPixelsX;
 		double hauteurPixels = hauteurMetres * facteurMetresEnPixelsY;
-		
+
 		dessin2d.dessinerImage(centreXPixels, centreYPixels, largeurPixels, hauteurPixels, srcImageCourante);
 	}
 
 	public void initierSaut() {
 		J.appel(this);
-		
+
 		// on peut sauter uniquement lorsqu'au plancher!
-		if(siPersonnageAuPlancher()) {
+		if (siPersonnageAuPlancher()) {
 			vitesseYMetresSecondes = VITESSE_SAUT_METRES_PAR_SECONDE;
 			enSaut = true;
 		}
@@ -195,37 +177,37 @@ public class Personnage2D extends Objet2D {
 		J.appel(this);
 		directionCourante = direction;
 		enMouvement = true;
-			
-		switch(direction) {
-		
-			case GAUCHE:
-				vitesseXMetresSecondes = - VITESSE_MOUVEMENT_METRES_PAR_SECONDE;
-				
-				break;
 
-			case DROITE:
-				vitesseXMetresSecondes =  VITESSE_MOUVEMENT_METRES_PAR_SECONDE;
-				
-				break;
-			}
+		switch (direction) {
+
+		case GAUCHE:
+			vitesseXMetresSecondes = -VITESSE_MOUVEMENT_METRES_PAR_SECONDE;
+
+			break;
+
+		case DROITE:
+			vitesseXMetresSecondes = VITESSE_MOUVEMENT_METRES_PAR_SECONDE;
+
+			break;
+		}
 	}
 
 	public void stopperMouvement() {
 		J.appel(this);
-		
+
 		enMouvement = false;
 
-		if(!enSaut) {
+		if (!enSaut) {
 			vitesseXMetresSecondes = 0;
 		}
 	}
 
 	public void puncher() {
 		J.appel(this);
-		
+
 		srcImageCourante = srcImagePunch;
-		
-		if(tempsRestantAuPunch <= 0) {
+
+		if (tempsRestantAuPunch <= 0) {
 			tempsRestantAuPunch = TEMPS_UN_PUNCH;
 		}
 	}
@@ -233,11 +215,11 @@ public class Personnage2D extends Objet2D {
 	public void bloquer() {
 		J.appel(this);
 		srcImageCourante = srcImageBloquer;
-		
-		if(tempsRestantAuBloque <= 0) {
+
+		if (tempsRestantAuBloque <= 0) {
 			tempsRestantAuBloque = TEMPS_UN_BLOQUE;
 		}
-		
+
 	}
 	
 }

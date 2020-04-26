@@ -1,7 +1,6 @@
 package josser_combat.modeles.monde2d;
 
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Set;
 
 import commun.debogage.J;
