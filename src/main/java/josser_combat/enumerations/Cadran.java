@@ -2,6 +2,6 @@ package josser_combat.enumerations;
 
 public enum Cadran {
 	
-	GAUCHE, DROIT;
+	PERSONNAGE_GAUCHE, PERSONNAGE_DROIT;
 
 }

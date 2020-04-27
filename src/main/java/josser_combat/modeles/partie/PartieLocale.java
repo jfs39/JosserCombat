@@ -19,12 +19,15 @@ public final class PartieLocale extends Modele<PartieLocaleLectureSeule> impleme
 	
 	private Map<Cadran, Personnage2D> lesPersonnages = new HashMap<>();
 	
+	Personnage2D joseph;
+	Personnage2D yasser;
+	
 	public void initialiser() {
 		J.appel(this);
 		
 		monde2D = new Monde2D();
 		
-		Personnage2D joseph = monde2D.ajouterPersonnage(Cadran.GAUCHE, 
+		/*Personnage2D */joseph = monde2D.ajouterPersonnage(Cadran.PERSONNAGE_GAUCHE, 
 				"img/Joseph/Joseph.png", 
 				"img/Joseph/JosephPunch.png",
 				"img/Joseph/JosephEnergy.png",
@@ -32,7 +35,7 @@ public final class PartieLocale extends Modele<PartieLocaleLectureSeule> impleme
 				"img/Joseph/JosephPunchMirror.png",
 				"img/Joseph/JosephEnergyMirror.png");
 
-		Personnage2D yasser = monde2D.ajouterPersonnage(Cadran.DROIT, 
+		/*Personnage2D*/ yasser = monde2D.ajouterPersonnage(Cadran.PERSONNAGE_DROIT, 
 				"img/Yasser/Yasser.png", 
 				"img/Yasser/YasserPunch.png",
 				"img/Yasser/YasserEnergy.png",
@@ -40,8 +43,8 @@ public final class PartieLocale extends Modele<PartieLocaleLectureSeule> impleme
 				"img/Yasser/YasserPunchMirror.png",
 				"img/Yasser/YasserEnergyMirror.png");
 
-		lesPersonnages.put(Cadran.GAUCHE, joseph);
-		lesPersonnages.put(Cadran.DROIT, yasser);
+		lesPersonnages.put(Cadran.PERSONNAGE_GAUCHE, joseph);
+		lesPersonnages.put(Cadran.PERSONNAGE_DROIT, yasser);
 	}
 
 	
@@ -55,6 +58,9 @@ public final class PartieLocale extends Modele<PartieLocaleLectureSeule> impleme
 	
 	public void reagirAuTempsQuiPasse(double secondesEcoulees) {
 		J.appel(this);
+//		if (joseph.ispunching()) {
+//			yasser.initierSautBlessure();
+//		}
 		
 		monde2D.reagirAuTempsQuiPasse(secondesEcoulees);
 	}

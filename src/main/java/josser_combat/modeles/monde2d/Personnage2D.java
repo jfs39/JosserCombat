@@ -25,12 +25,14 @@ public class Personnage2D extends Objet2D {
 	private double tempsRestantAuBloque = 0;
 	
 	private double accelerationGraviteTerrestreMetresSecondesCarres =  9.81;
-	private final double VITESSE_SAUT_METRES_PAR_SECONDE = 10;
+	private final double VITESSE_SAUT_METRES_PAR_SECONDE = 9;
+	private final double VITESSE_BLESSURE_METRE_PAR_SECONDE = 5;
 
 	private final double VITESSE_MOUVEMENT_METRES_PAR_SECONDE = 5;
 	
 	private boolean enMouvement = false;
-	private boolean enSaut = false;
+	public boolean enSaut = false;
+	private boolean punchConnect = false;
 	
 	
 	
@@ -70,7 +72,7 @@ public class Personnage2D extends Objet2D {
 
 	public void chargerImages(Dessin2D dessin2d) {
 		J.appel(this);
-		
+
 		dessin2d.chargerImage(srcImageRepos);
 		dessin2d.chargerImage(srcImagePunch);
 		dessin2d.chargerImage(srcImageBloquer);
@@ -98,6 +100,7 @@ public class Personnage2D extends Objet2D {
 		}
 
 		if (tempsRestantAuPunch > 0) {
+			punchConnect = true;
 			gererDirectionPersonnage(srcImagePunchMirror, srcImagePunch);
 
 			tempsRestantAuPunch -= secondesEcoulees;
@@ -220,6 +223,20 @@ public class Personnage2D extends Objet2D {
 			tempsRestantAuBloque = TEMPS_UN_BLOQUE;
 		}
 
+	}
+	
+	public void initierSautBlessure() {
+		J.appel(this);
+
+		// on peut sauter uniquement lorsqu'au plancher!
+		if (siPersonnageAuPlancher()) {
+			vitesseYMetresSecondes = VITESSE_BLESSURE_METRE_PAR_SECONDE;
+			enSaut = true;
+		}
+	}
+	
+	public boolean ispunching() {
+		return punchConnect;
 	}
 	
 }

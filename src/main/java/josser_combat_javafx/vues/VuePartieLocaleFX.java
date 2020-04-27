@@ -82,62 +82,62 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 				// faire sauter le personnage de GAUCHE
 				if(event.getCode() == KeyCode.W) {
 					
-					sauterPourEnvoi.setCadran(Cadran.GAUCHE);
+					sauterPourEnvoi.setCadran(Cadran.PERSONNAGE_GAUCHE);
 					sauterPourEnvoi.envoyerCommande();
 
 				// bouger le personnage de GAUCHE vers la GAUCHE
 				}else if(event.getCode() == KeyCode.A) {
 					
-					bougerPourEnvoi.setCadran(Cadran.GAUCHE);
+					bougerPourEnvoi.setCadran(Cadran.PERSONNAGE_GAUCHE);
 					bougerPourEnvoi.setDirection(Direction.GAUCHE);
 					bougerPourEnvoi.envoyerCommande();
 					
 				// bouger le personnage de GAUCHE vers la DROITE
 				}else if(event.getCode() == KeyCode.D) {
 
-					bougerPourEnvoi.setCadran(Cadran.GAUCHE);
+					bougerPourEnvoi.setCadran(Cadran.PERSONNAGE_GAUCHE);
 					bougerPourEnvoi.setDirection(Direction.DROITE);
 					bougerPourEnvoi.envoyerCommande();
 					
 				// faire puncher le personnage de GAUCHE
 				}else if(event.getCode() == KeyCode.SPACE) {
 					
-					puncherPourEnvoi.setCadran(Cadran.GAUCHE);
+					puncherPourEnvoi.setCadran(Cadran.PERSONNAGE_GAUCHE);
 					puncherPourEnvoi.envoyerCommande();
 					
 				//faire sauter Yasser	
 				} else if(event.getCode() == KeyCode.UP) {
 				
-					sauterPourEnvoi.setCadran(Cadran.DROIT);
+					sauterPourEnvoi.setCadran(Cadran.PERSONNAGE_DROIT);
 					sauterPourEnvoi.envoyerCommande();
 					
 				//faire marcher Yasser vers la droite
 				} else if(event.getCode() == KeyCode.RIGHT) {
 					
-					bougerPourEnvoi.setCadran(Cadran.DROIT);
+					bougerPourEnvoi.setCadran(Cadran.PERSONNAGE_DROIT);
 					bougerPourEnvoi.setDirection(Direction.DROITE);
 					bougerPourEnvoi.envoyerCommande();
 					
 				//faire marcher Yasser vers la gauche
 				} else if(event.getCode() == KeyCode.LEFT) {
 					
-					bougerPourEnvoi.setCadran(Cadran.DROIT);
+					bougerPourEnvoi.setCadran(Cadran.PERSONNAGE_DROIT);
 					bougerPourEnvoi.setDirection(Direction.GAUCHE);
 					bougerPourEnvoi.envoyerCommande();
 				//faire puncher Yasser
 				} else if(event.getCode() == KeyCode.NUMPAD0) {
 					
-					puncherPourEnvoi.setCadran(Cadran.DROIT);
+					puncherPourEnvoi.setCadran(Cadran.PERSONNAGE_DROIT);
 					puncherPourEnvoi.envoyerCommande();
 				//faire bloquer Yasser	
 				} else if(event.getCode() == KeyCode.NUMPAD1) {
 					
-					bloquerPourEnvoi.setCadran(Cadran.DROIT);
+					bloquerPourEnvoi.setCadran(Cadran.PERSONNAGE_DROIT);
 					bloquerPourEnvoi.envoyerCommande();
 				//Faire bloquer Joseph	
 				} else if(event.getCode() == KeyCode.SHIFT) {
 					
-					bloquerPourEnvoi.setCadran(Cadran.GAUCHE);
+					bloquerPourEnvoi.setCadran(Cadran.PERSONNAGE_GAUCHE);
 					bloquerPourEnvoi.envoyerCommande();
 				}
 			}
@@ -153,22 +153,22 @@ public class VuePartieLocaleFX implements VuePartieLocale, Initializable{
 				// arrêter de bouger le personnage à GAUCHE
 				if(event.getCode() == KeyCode.A && !touchesEnfoncees.contains(KeyCode.D) ) {
 					
-					stopperPourEnvoi.setCadran(Cadran.GAUCHE);
+					stopperPourEnvoi.setCadran(Cadran.PERSONNAGE_GAUCHE);
 					stopperPourEnvoi.envoyerCommande();
 
 				} else if(event.getCode() == KeyCode.D && !touchesEnfoncees.contains(KeyCode.A)  ) {
 					
-					stopperPourEnvoi.setCadran(Cadran.GAUCHE);
+					stopperPourEnvoi.setCadran(Cadran.PERSONNAGE_GAUCHE);
 					stopperPourEnvoi.envoyerCommande();
 					
 				}else if(event.getCode() == KeyCode.RIGHT && !touchesEnfoncees.contains(KeyCode.LEFT) ) {
 					
-					stopperPourEnvoi.setCadran(Cadran.DROIT);
+					stopperPourEnvoi.setCadran(Cadran.PERSONNAGE_DROIT);
 					stopperPourEnvoi.envoyerCommande();
 					
 				}else if(event.getCode() == KeyCode.LEFT && !touchesEnfoncees.contains(KeyCode.RIGHT) ) {
 					
-					stopperPourEnvoi.setCadran(Cadran.DROIT);
+					stopperPourEnvoi.setCadran(Cadran.PERSONNAGE_DROIT);
 					stopperPourEnvoi.envoyerCommande();
 					
 				}

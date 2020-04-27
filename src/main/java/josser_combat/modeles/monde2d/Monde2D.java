@@ -24,7 +24,7 @@ public class Monde2D implements Monde2DLectureSeule {
 		
 		double centreX = 2;
 		
-		if(cadran == Cadran.DROIT) {
+		if(cadran == Cadran.PERSONNAGE_DROIT) {
 			centreX = largeurMetres - 2;
 		}
 
