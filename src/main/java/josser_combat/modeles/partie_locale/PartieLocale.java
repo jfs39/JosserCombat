@@ -7,4 +7,13 @@ import josser_combat.modeles.partie.Partie;
 
 public class      PartieLocale 
        extends    Partie<PartieLocaleLectureSeule> 
-       implements PartieLocaleLectureSeule {}
+       implements PartieLocaleLectureSeule {
+	
+	public void initialiser() {
+		J.appel(this);
+		
+		
+	}
+	
+	
+}

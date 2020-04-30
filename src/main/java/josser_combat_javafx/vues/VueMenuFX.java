@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
-import josser_combat.modeles.partie.PartieLocale;
+import josser_combat.modeles.partie_locale.PartieLocale;
 import josser_combat_client.afficheurs.AfficheurPartieLocale;
 import josser_combat_client.vues.VueMenu;
 import josser_combat_javafx.afficheurs.AfficheurPartieLocaleFX;

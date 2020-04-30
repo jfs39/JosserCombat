@@ -5,7 +5,7 @@ import commun_javafx.ChargeurDeVue;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import josser_combat.modeles.partie.PartieLocale;
+import josser_combat.modeles.partie_locale.PartieLocale;
 import josser_combat_client.controleurs.ControleurMenu;
 import josser_combat_client.controleurs.ControleurParametres;
 import josser_combat_javafx.afficheurs.AfficheurMenuFX;
