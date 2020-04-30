@@ -1,5 +1,6 @@
 package josser_combat_javafx;
 
+import java.net.URI;
 import java.util.Locale;
 
 import commun.debogage.DoitEtre;
@@ -36,6 +37,9 @@ public class Principal extends Application {
 	public void start(Stage fenetrePrincipale) throws Exception {
 		
 		J.appel(this);
+		
+		ClientJosseCombat client = new ClientJosseCombat(new URI(Constantes.ADRESSE));
+		client.connect();
 		
 		Scene scene = creerScenePrincipale();
 		ControleurParametresFX.playAudio();

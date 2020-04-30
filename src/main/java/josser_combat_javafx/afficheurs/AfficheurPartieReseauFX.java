@@ -1,0 +1,8 @@
+package josser_combat_javafx.afficheurs;
+
+import josser_combat_client.afficheurs.AfficheurPartieLocale;
+import josser_combat_client.afficheurs.AfficheurPartieReseau;
+import josser_combat_javafx.vues.VuePartieLocaleFX;
+import josser_combat_javafx.vues.VuePartieReseauFX;
+
+public class AfficheurPartieReseauFX extends AfficheurPartieReseau<VuePartieReseauFX> {}

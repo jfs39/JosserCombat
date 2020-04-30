@@ -20,12 +20,24 @@ public class ControleurMenuFX extends ControleurMenu<VueMenuFX,AfficheurMenuFX>{
 	
 	@Override
 	public void installerReceptionCommandes() {
-		// TODO Auto-generated method stub
+		J.appel(this);
 		
 	}
 
 	@Override
 	public void demarrer() {
+		J.appel(this);
+		
+	}
+
+	@Override
+	protected void obtenirMessagesPourEnvoi() {
+		J.appel(this);
+		
+	}
+
+	@Override
+	protected void installerReceptionMessages() {
 		J.appel(this);
 		
 	}

@@ -111,7 +111,7 @@ public class VueParametresFX implements VueParametres, Initializable {
 			System.out.println(sliderVolume.getValue());
 		});
 		
-/*----------------------- Autres méthodes -----------------------*/
+/*----------------------- Autres mÃ©thodes -----------------------*/
 	}
 
 	@Override

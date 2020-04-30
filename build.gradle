@@ -32,6 +32,16 @@ dependencies {
     compile project(':commun')
     compile project(':commun_javafx')
     compile project(':commun_client')
+
+    compile project(':commun_serveur')
+
+    // https://github.com/TooTallNate/Java-WebSocket
+    implementation 'org.java-websocket:Java-WebSocket:1.4.0'
+}
+
+task(serveur, dependsOn: 'classes', type: JavaExec) {
+   main = 'josser_combat_serveur.Principal'
+  classpath = sourceSets.main.runtimeClasspath
 }
 
 task(joueur01, dependsOn: 'classes', type: JavaExec) {

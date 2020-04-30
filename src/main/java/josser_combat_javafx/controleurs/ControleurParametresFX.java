@@ -46,4 +46,16 @@ public class ControleurParametresFX extends ControleurParametres<VueParametresFX
 		mediaPlayer.stop();
 	}
 
+	@Override
+	protected void obtenirMessagesPourEnvoi() {
+		J.appel(this);
+		
+	}
+
+	@Override
+	protected void installerReceptionMessages() {
+		J.appel(this);
+		
+	}
+
 }
